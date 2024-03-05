@@ -1,0 +1,38 @@
+1. Monolithic => Gartner(2022 Survey) => 74% are Monolithic Projects
+2. SOA(Service Oriented Architecture) => 6 to 10%  (Some of Features as Microservice, Remaining features combined as Monolithic)
+3. MicroService                       => 18 to 26%
+  - Dividing the entire application into smaller units where each and every unit represents a bussiness feature(service). This smallest unit can be refered as MicroService.
+-------------------------------------------------------------------------------------------
+4. Microservice Centralize Logging :
+  - Centralizing(Keeping at One Place from Diff Loc) the Microservice logging, where user can search and track the logs efficiently and quickly.
+5. ELK:
+
+  - L = Logstash => pipeline tool.Read all the logs and convert into Json Fromat.Invoke RestAPI of Elastic Search.
+
+ - E = ElasticSearch => Repository and Search Algo. NoSQL DB and Lucene Algo to find Quickly.
+
+ - K = Kibana => UI tool where we can see Data in Elastic Search DB.Graphical Repr,View Logs.
+
+6. Log Management Tools : (Diagram-5)
+   - Splunk, ELK, GrayLog, LogEntries, Loggly, Sumologic
+
+7. Splunk vs ELK : (Diagram-6)
+
+8. Adv and Dis of ELK : (Diagram-7)
+
+8. Realtime Usecases : (Diagram-8)
+
+
+---------------------------------------------------------------------------------------------                                  
+                                                                Installation 
+
+
+1.Follow Diagram for SetUp.
+2.Open This PC/Windows(c)/Kibana/elasticSearch X 86_64/elasticsearch-8.10.2/bin
+3.Run elasticsearch (Windows batch File)
+4.Type localhost:9200 (ElasticSearch Default Port)
+5.Open This PC/Windows(c)/Kibana/Kibana-8.10.2-windows/Kibana-8.10.2/bin
+6.Run Kibana(Windows Batch File)
+7.Type localhost:5601/app/home  => Kibana UI
+8.
+ 

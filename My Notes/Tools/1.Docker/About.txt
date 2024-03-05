@@ -1,0 +1,63 @@
+1.Developers develop diff microservices using diff Technologies.
+2.Frontend(Ang,React,Vue) - Backend(Java,C++,Python) - DB(MySql,Oracle,Postgre)
+3.Frontend,Backend code pushed into Github for Integration.
+4.Finally, After Completion - 
+   Stage-1 : Developers Test the Application in Dev Server(Environment).
+  This Dev Env has all Dependencies(Java Soft,Angular Soft,Mysql Software) to run the App.
+   Stage-2 : SIT Environment(Software Integration Testing).install all Dependencies.
+   Stage-3 : UAT Env. Client Acceptance Testing.Need to install all Dependencies.
+   Stage-4 : Pre-Production Env.need to install all Dependencies.
+   Stage-5 : Live Environment.need to install all Dependencies.
+5.Problem? :
+  Everytime need to change dependencies if versions been upgraded.Its not Recommendable.
+
+How Docker Solve this Problem?
+ - You do not need to install each dependencies at everytime of each Stage.Just Install Docker then Docker install all those dependencies and run Application.
+ - Docker is a opensource platform for Developing, shipping and running Applications in Containers.
+6. Libraries(JPA,Security,Junit,Redis) vs Dependencies(OS,JAVA,Angular,MYSQL).
+7. Devops Team is Responsibe for installing all dependencies in Environment to run App.
+8.Containerization:
+ - The Process of executing our application by using Docker is called Containerization.
+ - Inside Container, we have code,dependencies and libraries.
+9. sourceCode + pom.xml(Library Dependencies)=Package(Jar/war) ==> Run on Compiler.
+ sourceCode + pom.xml(Library Dependencies) + Dockerfile(Software Dependencies Inform)=  Docker Image.
+10.After Docker image is created,It is pushed into DockerHub/Docker Registry.
+11.From DockerHub we can pull into any Environment/Server(Dev Env,SIT Env,UAT) and can Run.
+   While Running,In that Environment - Container is Created.
+12. If we run the Docker Image - Container will be Created.Inside Container - we have code+Lib+Dependencies.
+13. Container is an Virtual Machine(Linux VM) where our application is going to Execute.
+    Here Container is Creating & Running Manually.But in Real world it is managed by           
+    Kubernetes.
+14.Docker SetUp :
+   - In my Local Computer, On Operating System(Host) - I am gonna install Docker Software.On Docker Software, I will run Multiple Microservice Containers(c1,c2,c3).Each
+Container is an Virtual Machine(Linux) Where an application is Running.
+15. Virtualization:
+   - Running one Operating System in another Operating System.
+16. Port Mapping :
+    - To access the Appllication that is Running in Container, we Need to establish the Connection btw our Local System Operating System to Virtual Linuc Machine(Container).
+
+
+
+ 
+Questions:
+1.What is Docker?
+ - Docker is Containerization Software.
+ - used to simplify our application Execution & deployment Process.
+ - take care of required Depedencies of Application.
+ - Using Docker we will run our Application as a Container.
+
+2. What is Containerization?
+ - The Process of Packaging our Application code and Dependencies as Single Unit and Executing as a Container is called as Containerization.
+ - Container is an Virtual Machine(Comp with OS)(Linux VM).Inside Linux Machine, our application is going to Execute.
+ 
+
+Note:
+ Deveops=(Docker+Kubernetes(Managing Containers)+Jenkins+Terraform(Create VM(Containers) without Manually)
+
+
+Before SpringBoot Available, Web Application Running:
+  
+ | SourceCode | -->  |Byte Code| -->  |War File(web App)| ---> |War Run in Tomcat Server|
+
+
+

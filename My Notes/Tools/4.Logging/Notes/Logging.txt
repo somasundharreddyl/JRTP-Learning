@@ -1,0 +1,105 @@
+========
+Logging
+========
+
+=> The process of storing application execution details to a file.
+
+=> To understand runtime behaviour of the application we will use logging in the application.
+
+=> With the help of logging we can identify root cause of the exception.
+
+=> To implement logging, we have several logging frameworks
+
+				1) Log4J
+				2) Log4J2
+				3) Logback
+
+=======================
+Logging Architecture	
+=======================
+
+1) Logger
+
+2) Layout
+
+3) Appender
+
+
+=> Logger is a class which is providing methods to write log msgs
+
+	ex : trace ( ), debug (), info (), warn (), error ( )
+
+Note: For every java class we will create one logger object.
+
+
+=> Layout represents log msg pattern
+
+	Ex:   Date time  log-level   thread  class - msg	
+
+=> Appender is used to write log msg to destination
+
+	Ex : ConsoleAppender, FileAppender	
+
+================
+Log Monitoring	
+================
+
+=> It is the process of reading or observing log msgs available in log file.
+
+Note: In Real-Time log msgs will be available in linux machines.
+
+=> To get log msgs from log file we have several tools
+
+			1) Putty / MobaXterm
+			2) WinScp
+			3) ELK
+			4) Splunk
+
+======================
+Spring Boot logging	
+=======================
+
+1) Create boot app with web starter
+
+2) Create service class like below
+
+@Service
+public class MsgService {
+
+	private Logger logger = LoggerFactory.getLogger(MsgService.class);
+
+	public String getWelcomeMsg() {
+
+		logger.info("getWelcomeMsg() - started...");
+
+		String msg = "Welcome to Ashok IT";
+
+		logger.info("getWelcomeMsg() - ended....");
+
+		return msg;
+	}
+}
+
+
+3) Create Rest Controller class like below
+
+@RestController
+public class MsgRestController {
+	
+	@Autowired
+	private MsgService msgService;
+	
+	@GetMapping("/welcome")
+	public String getMsg() {
+		return msgService.getWelcomeMsg();
+	}
+	
+}
+
+4) Run the application and send the request
+
+		URL : http://localhost:port/welcome
+
+Note: To print logs in the log file add below property in application.properties file
+
+		logging.file.name=app.log		

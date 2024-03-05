@@ -1,0 +1,6 @@
+1.Story of Amazon.
+2.Started with Booking Selling.
+3.Later sell Books with Postal Service
+4.Build First Website.
+5. one Fine day, Website users getting started low latency(buffering images)
+6.How He Solved latency issue?

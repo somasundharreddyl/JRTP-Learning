@@ -1,0 +1,360 @@
+Docker Setup:
+
+- ADD sudo before Every Command.
+
+1.Instead of Local Windows Machine, we are using AWS Linux OS VM where Docker can Install on.
+2.Open AWS Account and Create an EC2 Instance(Linux Machine).
+  - Launch an Instance.
+  - Name : Docker-Server
+  - Select Amazon Linux.
+  - select t2.micro.
+  - Create Key-Pair name as Docker-workshop.
+  - select RSA and .pem file.
+  - click on create key-pair.
+  - Finally click on Launch an Instance.
+3. USING MobaXterm, I am connecting My local Windows Machine to Linux Machine.
+   - copy public Ipv4 address from Ec2 Instance into Remote host in MobaXterm.
+   - Specify username as eC2-user.
+   - use private key - select the .pem file we downloaded.
+4. Command Prompt Window will open.
+   Commands :
+     $ who am i
+     $ java -version
+     $ docker -v
+5. Install Docker in Amazon Linux VM :
+      sudo yum update -y 
+      sudo yum install docker -y
+      sudo service docker start
+      sudo usermod -aG docker ec2-user
+      exit
+
+   - Click R to Restart Terminal.
+6. Check Docker is Installed or Not : $ docker -v
+                                      $ docker info
+                                      $ clear
+7. Check Docker Images in Docker :
+    - $ docker images
+8. To create Docker Image, we need DockerFile first.For Now,work with Ready-made Docker Images in DockerHub/Registry.  (hub.docker.com)
+   - login into dockerhub Account.
+   - To Download docker image from Hub:
+     $ docker pull <docker-image-Name>
+     $ docker run <docker-image-Name>/<Docker-Image-ID>
+   - To Delete Docker Images. First Delete the Container.
+     $ docker rm <Container-ID>              //rm-remove
+     $ docker rmi <DockerImage-ID>             //rmi - remove image
+9. While Pulling servers(not Programs(Hello-World))(like SpringApp,Jenkins server,Sonar Server runs on Server 8080/other Ports) from DockerHub need to do port-Mapping while we run it.
+   - Need to know Two Port Numbers. 
+     1.Container Port Number   
+     2.Host Port Number.
+
+    Command : $ docker run ashokit/spring-boot-rest-api
+          - image downloads.
+          - port Number is Visible. then Run with Port Number Again.
+       
+            : $ docker run -p <Host-PortNo>:<Container-PortNo> ashok/springboot-api
+            : $ docker run -p 9090:9090 ashokit/spring-boot-rest-api       //PortMaping
+            
+     
+10. Exit From Terminal - ctrl+c . But Container is Stopped.
+11. Exit From Terminal without stopping Container.
+        $ docker run -d -p 9090:9090 ashokit/spring-boot-rest-api   //Detached Mode
+        $ docker run -d -p 9090:9090 --name <containerName> ashokit/spring-boot-rest-api
+12. To know all Running Containers :
+        $ docker ps
+        $ docker ps -a      (Show all Running and Stopped Containers)
+
+13. Allow Inbound Rule by Adding 9090(HOST-Port) in Security Group.(Anywhere-IPV4)(0.0.0.0)
+
+    publicIP:9090/welcome/Raj              9090-Container port(Inside Spring given Port)
+
+14. To Stop Running Container : $ docker stop <Container-ID>    //get Id from docker ps.
+15. To Restart Stopped Container : $ docker start <container-ID>
+16. To Delete all Un-used Docker Images and Stopped Containers : 
+     - $ docker system prune -a
+17. To get Logs from Our Running Application : $ docker logs <Container-ID>
+
+----------------------------------------------------------------------------------------
+
+- Create Our Own Dockerfile, Docker Image and push into DockerHUB, Docker Compose.
+
+1.DockerFile Keywords:
+  -1. FROM          : used to Specify base image(Dependencies) required for App.
+
+         FROM : openjdk
+         FROM : tomcat8.5
+         FROM : node-19
+         FROM : python-3.1
+
+  -2. MAINTAINER   : used to specify Author of DockerFile.
+
+               MAINTAINER <ASHOK>
+
+  - COPY         : used to copy files from host machine(AWS Linux) to Container Mach.
+    
+         COPY <SRC> <DEST>
+         COPY target/app.war     /user/app/tomcat/webapp.war
+
+  -3. RUN          : used to Execute Instructions while Creating Docker Image.
+
+                RUN 'sudo apt install git'
+                RUN 'sudo apt install maven'
+                RUN 'git clone <repo>'
+
+       - We can Run Multiple Run Instructions and they will be process from Top->Bottom.
+  
+  -4. CMD          : used to execute instructions while creating container.
+
+            CMD 'java -jar <jar-file>'
+
+     - if we write multiple CMD instructions, docker will process only last CMD           
+       Instruction.
+     - To Avoid Ovverriding USE ENTRYPOINT.
+            
+  -5. EXPOSE       : used to specify Container Port Number.(To know port Number)
+          
+                EXPOSE 8080
+
+  -6. WORKDIR      : used to Specify Working Directory.(Path Change)
+             
+              WORKDIR /usr/app/
+       
+  -7. ENTRYPOINT
+
+
+Naming Convention : Dockerfile, ashokitdockerfile
+
+
+1.Writing DockerFile:
+  
+  $ vi Dockerfile
+
+  click i
+  FROM ubuntu
+  MAINTAINER <SUNDHAR>
+  RUN echo 'run msg - 1'
+  RUN echo 'run msg - 2' 
+  CMD echo 'cmd msg - 1'
+  click ESC
+  :wq        (write+quit)
+  cat Dockerfile           => show content in DockerFile.
+
+  docker build -t app1 . =>(Building DockerFile)  -t=tag  app1=dockerImageName (Space     
+                              dot)-at last helps to check dockerfile in currentdirectory
+
+  docker images
+
+  docker run app1     => Run DockerImage
+
+  ls -l               => list of dockerfiles
+  
+ docker build -t app2 -f ashokitdockerfile .   => When two or more dockerfiles  
+                                                   available.
+ 
+ 
+ docker build -t somasundhar169/app1 .   => DockerImageName for DockerHub.
+
+ $ docker login
+ 
+ $ docker push somasundhar169/app1
+
+ $ docker push somasundhar169/app1:v1
+ $ docker push somasundhar169/app1:v2            => Tag Name(Maintain Diff Ver of img's)
+ $ docker push somasundhar169/app1:latest
+
+
+------------------------------------------------------------------------------------
+
+Note :
+
+1.Before SpringBoot Available, Web Application Running:
+  
+ | SourceCode | --compile->  |Byte Code| --pkg->  |War File(web App)| --copy-> |War file 
+ 
+  Run in Tomcat Server|
+
+2. During SpringBoot:
+
+|SourceCode| --compile-> |Byte Code| --pkg-> |Jar File| --copy-> |Run Jar File|
+ 
+  
+
+-War File copy into Tomcat and Run. But Jar file directly Run.
+- SpringBoot start running from Mainmethod(Jar File)
+- When we start running Jar File then Tomcat Server get Started Running(Embedded Server)
+
+
+
+--------Dockerfile for Java Web App (no springboot)------------
+
+FROM tomcat:8.0.20-jre8
+
+MAINTAINER <Ashok>
+
+EXPOSE 8080
+
+COPY target/app.war  /usr/app/local/tomcat/webapps/
+
+------------Dockerfile for springboot app--------------------
+
+FROM openjdk:11
+
+COPY target/sbapp.jar  /usr/app/
+
+WORKDIR  /usr/app
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "sbapp.jar"]
+
+-------------------------------------------------------------
+
+=============================
+Dockerizing Spring Boot App :
+=============================
+
+Git Repo: https://github.com/ashokitschool/spring-boot-docker-app.git
+
+1) Install git client in host vm & clone repo
+
+	$ sudo yum install git
+	$ git clone <repo-url>
+
+2) Install maven in host vm.
+
+	$ sudo yum install maven
+
+3) Go inside project directory & perform maven build
+
+	$ cd <dir-name>
+        $ mvn clean package    => Target File is Created. (ls -l target)=> content inside.
+	
+    Note :
+    DockerFile is Already present in Application.
+     
+     FROM openjdk:11
+     MAINTAINER "SUNDHAR"
+     COPY target/spring-boot-docker-app.jar  /usr/app/
+     WORKDIR  /usr/app
+     EXPOSE 8080
+     ENTRYPOINT ["java", "-jar", "spring-boot-docker-app.jar"]
+
+      
+
+4) Build docker image
+
+	$ docker build -t ashokit/sbapp .
+
+5) Run docker container using docker image
+	
+	$ docker run -d -p 8080:8080 ashokit/sbapp
+
+6) Enable host port in security group inbound rules
+
+7) Access application in browser		
+
+
+http://3.108.219.241:8080/
+
+8) cd ..  => go back to directory.
+
+
+===============================
+Dockerizing Python Application :
+===============================
+
+https://github.com/ashokitschool/python-flask-docker-app.git
+
+
+$ git clone <repo>
+
+$ cd <dir-name>
+
+$ docker build -t pyapp .
+
+$ docker images
+
+$ docker run -d -p 5000:5000 pyapp
+
+
+Note : In One Linux Machine, We can Run any No of Containers with same Port Number.
+Because each container can act as Linux Machine.But Host Port No should be Unique(Diff).
+
+-p 9091(Host):8080(Container) => Python App Container.
+-p 9092(Host):8080(Container) => Java App Container
+
+
+
+================
+Docker Compose
+================
+
+=> It is used to manage multi container based applications
+
+## Docker-Compose Setup : https://github.com/ashokitschool/DevOps-Documents/blob/main/03-Docker-Compose-Setup.md
+
+=> To work with docker compose we need to create docker-compose.yml file
+
+------------------SpringBoot-MySQL-Docker-Compose.yml------------------
+
+version: "3"
+services:
+  application:
+    image: spring-boot-mysql-app
+    ports:
+      - "8080:8080"
+    networks:
+      - springboot-db-net
+    depends_on:
+      - mysqldb
+    volumes:
+      - /data/springboot-app    
+  mysqldb:
+    image: mysql:5.7
+    networks:
+      - springboot-db-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=sbms
+    volumes:
+      - /data/mysql
+
+networks:
+  springboot-db-net:
+
+------------------SpringBoot-MySQL-Docker-Compose.yml------------------
+
+
+##Git Hub Repo : https://github.com/ashokitschool/spring-boot-mysql-docker-compose.git
+
+$ git clone <repo-url>
+
+$ sudo apt install maven
+
+$ cd <project-dir>
+
+$ mvn clean package
+
+$ docker build -t spring-boot-mysql-app .
+
+$ docker images
+
+$ docker-compose up -d
+
+$ docker-compose ps
+
+Note: Enable 8080 in security group
+
+=> Access application in browser
+
+	URL : http://public-ip:host-port/
+
+$ docker-compose down	
+
+
+
+
+
+
+   
+    
+

@@ -1,0 +1,19 @@
+2024-03-04T07:14:37.574+05:30  INFO 8684 --- [main] c.c.l.LoggingPracticalApplicationTests   : Starting LoggingPracticalApplicationTests using Java 17.0.4.1 with PID 8684 (started by SOMA SUNDHAR in C:\Users\SOMA SUNDHAR\OneDrive\Desktop\JRTP\workspace\LoggingPractical)
+2024-03-04T07:14:37.595+05:30  INFO 8684 --- [main] c.c.l.LoggingPracticalApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-03-04T07:14:39.963+05:30  INFO 8684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-04T07:14:40.166+05:30  INFO 8684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 1 JPA repository interface.
+2024-03-04T07:14:41.754+05:30  INFO 8684 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-04T07:14:42.035+05:30  INFO 8684 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-04T07:14:42.198+05:30  INFO 8684 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-04T07:14:43.304+05:30  INFO 8684 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-04T07:14:43.405+05:30  INFO 8684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-04T07:14:44.563+05:30  INFO 8684 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12f8682a
+2024-03-04T07:14:44.576+05:30  INFO 8684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-04T07:14:44.881+05:30  WARN 8684 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-04T07:14:48.031+05:30  INFO 8684 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-04T07:14:48.222+05:30  INFO 8684 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-04T07:14:49.432+05:30  WARN 8684 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-04T07:14:50.752+05:30  INFO 8684 --- [main] c.c.l.LoggingPracticalApplicationTests   : Started LoggingPracticalApplicationTests in 14.325 seconds (process running for 18.54)
+2024-03-04T07:14:52.988+05:30  INFO 8684 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-04T07:14:52.995+05:30  INFO 8684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-04T07:14:53.039+05:30  INFO 8684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

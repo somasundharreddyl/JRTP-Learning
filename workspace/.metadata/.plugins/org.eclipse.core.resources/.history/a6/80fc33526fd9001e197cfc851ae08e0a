@@ -1,0 +1,5 @@
+package com.company.loggingpractical.controller;
+
+public class StudentController {
+
+}
