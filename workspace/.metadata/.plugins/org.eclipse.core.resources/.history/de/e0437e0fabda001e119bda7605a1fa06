@@ -8,4 +8,4 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 logging.file.name=stud.log
-logging.level.root=debug
+logging.level.root=info

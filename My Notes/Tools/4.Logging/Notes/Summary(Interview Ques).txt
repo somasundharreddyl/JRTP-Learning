@@ -1,0 +1,19 @@
+==========
+Summary	
+==========
+
+1) What is Logging
+2) Why Logging
+3) Logging Architecture
+		- Logger
+		- Layout
+		- Appender
+4) Log Levels
+5) Logback
+6) Logging in Spring Boot
+7) Rolling Policy
+8) SLF4J vs Log4J
+9) Log Monitoring
+		- Putty/WinScp
+		- ELK
+		- Splunk		
