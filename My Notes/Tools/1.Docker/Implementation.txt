@@ -65,7 +65,7 @@ Docker Setup:
 
 13. Allow Inbound Rule by Adding 9090(HOST-Port) in Security Group.(Anywhere-IPV4)(0.0.0.0)
 
-    publicIP:9090/welcome/Raj              9090-Container port(Inside Spring given Port)
+    publicIP:9090/welcome/Raj              9090-Host port(Inside Spring given Port)
 
 14. To Stop Running Container : $ docker stop <Container-ID>    //get Id from docker ps.
 15. To Restart Stopped Container : $ docker start <container-ID>
@@ -253,7 +253,7 @@ Git Repo: https://github.com/ashokitschool/spring-boot-docker-app.git
 7) Access application in browser		
 
 
-http://3.108.219.241:8080/
+http://3.108.219.241:8080/              (8080 is Host Port Number(Left))
 
 8) cd ..  => go back to directory.
 
@@ -285,14 +285,21 @@ Because each container can act as Linux Machine.But Host Port No should be Uniqu
 
 
 ================
-Docker Compose
+Docker Compose(No Need to Create Docker Compose.yml if we use Kubernetes because Kubernetes manages all Containers.)
 ================
+=> In Real World, We Develop Projects using Microservices Architecture,So it involves Multiple Images and Containers.Here Managing all containers is not Easy.
 
-=> It is used to manage multi container based applications
+=> Through Docker-Compose, we can Create & Delete multiple containers in single shot.we can Start and Stop all Containers or only Particular Containers in single shot.
+
+=> It is used to manage multi container based applications.
 
 ## Docker-Compose Setup : https://github.com/ashokitschool/DevOps-Documents/blob/main/03-Docker-Compose-Setup.md
 
-=> To work with docker compose we need to create docker-compose.yml file
+=> To work with docker compose we need to create docker-compose.yml file.
+
+=> Practical Implementation:
+   -------------------------
+   Creating Two Containers for Spring Application and MYSQL WorkBench.Both should be Run on Same Docker Network because Both need to be communicate each other and Spring App is dependent on MySql.
 
 ------------------SpringBoot-MySQL-Docker-Compose.yml------------------
 
@@ -315,7 +322,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=sbms
-    volumes:
+    volumes:                                      => Storage inside Container.
       - /data/mysql
 
 networks:
@@ -324,11 +331,24 @@ networks:
 ------------------SpringBoot-MySQL-Docker-Compose.yml------------------
 
 
+
+1.Install Docker(For UBUNTU-LINUX Machine):
+sudo apt update
+curl -fsSL get.docker.com | /bin/bash
+sudo usermod -aG docker ubuntu 
+exit
+
+2.Install Docker-Compose apart from Docker.
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+  docker-compose --version
+
+
 ##Git Hub Repo : https://github.com/ashokitschool/spring-boot-mysql-docker-compose.git
 
 $ git clone <repo-url>
 
-$ sudo apt install maven
+$ sudo apt install maven                            => for ubuntu linux machine
 
 $ cd <project-dir>
 
@@ -338,9 +358,9 @@ $ docker build -t spring-boot-mysql-app .
 
 $ docker images
 
-$ docker-compose up -d
+$ docker-compose up -d                    => create containers of Both Application and Mysql(No need of Running docker run -d -p 8080:8080 to create Container)
 
-$ docker-compose ps
+$ docker-compose ps                => Check Container is Up or Down.
 
 Note: Enable 8080 in security group
 
@@ -348,11 +368,14 @@ Note: Enable 8080 in security group
 
 	URL : http://public-ip:host-port/
 
-$ docker-compose down	
+$ docker-compose down	                 => Delete Containers
 
 
 
+---------------------------------------------------------------------------------------
 
+Interactive Mode vs Detached Mode :
+- In Interactive Mode, Logs will be printed.
 
 
    

@@ -1,0 +1,44 @@
+========
+AWS S3
+========
+
+=> S3 stands for simple storage service
+
+=> S3 is used for unlimited storage
+
+=> S3 works based on Object storage (object=file)
+
+=> S3 is a paid service (for storing & for retriving)
+
+=> S3 maintains data using buckets concept
+
+=> Bucket means group of objects
+
+		ex : netflix_tollywood_movies_bucket
+			 netflix_bollywood_movies_bucket
+			 netflix_hollywood_movies_bucket
+
+Note: When we create bucket, aws will generate one URL for that.
+
+=> When we upload object in the bucket then object url will be generated.
+
+=================
+S3 Lab Practice
+=================
+
+1) Create bucket in s3
+
+2) upload object in s3
+
+===========
+Assignment
+===========
+
+1) Develop spring boot web application to store course details
+
+			- course name
+			- course duration
+			- course price
+			- course image
+
+Note: Course image should be stored into AWS s3 bucket and course info should be stored into db table.			

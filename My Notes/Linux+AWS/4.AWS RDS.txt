@@ -1,0 +1,109 @@
+==========================================================================
+Spring boot with AWS RDS DB : https://www.youtube.com/watch?v=GSu1g9jvFhY
+==========================================================================
+
+
+==========
+AWS RDS
+==========
+
+=> For every application database is required to store data permanently
+
+=> We can use database in 2 ways
+
+		1) On-Prem database
+
+		2) Cloud Database
+
+==================================
+Challenges with On Prem Database
+==================================
+
+1) We need to take care of DB server
+
+2) We need to download & install DB server
+
+3) We need to purchase DB licenses
+
+4) We need to secure database server
+
+5) We need to maintain DB backup
+
+Note: To overcome all theses challenges we will use Cloud Database.
+
+
+===============
+Cloud Database
+===============
+
+=> RDS stands for Relational Database Service
+
+=> RDS is used create relational databases in the AWS cloud
+
+	Ex: Oracle, MySQL, Postgres, SQLServer.......
+
+=> RDS is a fully managed service in AWS cloud
+
+=> If we use RDS then AWS will take care of our Database Administration
+
+		Ex: License, security, backup ....
+
+=> RDS works based on Pay as you go model.
+
+
+######################################
+Steps to create MYSQL DB using AWS RDS
+######################################
+
+1) Login into AWS management console
+
+2) Goto RDS Service
+
+3) Click on 'Create Database'
+
+		Choose a database creation method : Easy Create
+		Engine Option : MySQL
+		Template : Free Tier
+		DB instance Identifier : ihis (Note : you can give anything)
+		Username : admin
+		Password : Choose a passord
+	
+
+4) Click on 'Create Database' (It will take few minutes of time to create)
+
+	Note: Notedown username and password of the database
+
+5) Once Database created, it will provide database Endpoint URL to access
+
+6) Change Database to Public Access
+
+7) Enable All Traffic in Security Group attached to Database.
+
+
+
+=======================
+Database Credentials
+======================
+
+Endpoint : jrtp-rds-db.cx2weqx.ap-south-1.rds.amazonaws.com
+
+Port : 3306
+
+Username : admin
+
+Password : AshokIT2024
+
+Initial DB name : jrtpdb
+
+
+==========
+Lab Task
+=========
+
+Step-1 : Create MySQL DB using AWS RDS
+
+Step-2 : Test DB Connection using Workbench
+
+Step-3 : Configure RDS DB credentials in Spring Boot App & execute
+
+Step-3 : Delete Database To avoid billing

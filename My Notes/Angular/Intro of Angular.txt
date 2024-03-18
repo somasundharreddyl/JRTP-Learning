@@ -1,0 +1,25 @@
+1.Story of Amazon.
+2.Started with Booking Selling.
+3.Later sell Books with Postal Service
+4.Build First Website.
+USPS ==> Postal Service ==> Running the business through IT With in 4 months of time frame ==> achieved target ==> problem Arises(Latency)
+5. one Fine day, Website users getting started low latency(buffering images).
+
+If 100+ customers browse application at the same time (in 5 mts) ==> Only 50 to 60 persons are getting the web page.
+
+
+To reduce the burden on the server ==> Client side framework is created ==> Code written by developer will be exeucted on client browser itself ==> Amazon Developer ==> Amazon Data Center Vijay ==> www.amazon.com/cart ==> cart.js file which is created.
+
+Before JavaScript is Introduced in Frontend, Tomcat Server convert Backend data into DOM Format and then in the frontend Browser Validates the DOM format is Correct or not. It is Time consuming Process.
+
+Some of the server side functionalities shifted to client side(Diagram-1)
+1) Validation of the page ==> DOB, qty, address ==> Validate date, Valid qty, Valid Address
+2) DOM Tree Creation(HTML Format(Body,Head)) ==> Web Page Creation ==> Dynamic HTML from JS
+3) Business logic ==> Taking inputs from web page and giving the data to server ==> Rendering the data to web page after response from Server
+
+After Javascript ==> JQuery ==> Angular JS 
+
+
+6.How He Solved latency issue?
+
+- Amazon Introduced JavaScript in Frontend.

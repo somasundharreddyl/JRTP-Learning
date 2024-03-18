@@ -1,0 +1,124 @@
+=================================================================
+
+Prequesite : AWS Cloud Free Tier Account
+
+Reference Video : https://www.youtube.com/watch?v=xi-JDeceLeI
+
+=================================================================
+
+
+1) Linux OS
+
+2) Linux Commands
+
+3) What is IT Infrastructure
+
+4) On-Prem Infrastructure
+
+5) Cloud Computing
+
+6) Advantages with Cloud 
+
+7) AWS Cloud 
+
+8) AWS Services Overview
+
+9) EC2 (Elastic Compute Cloud)
+
+		- EBS
+		- Load Balancing
+		- Auto Scaling
+
+10) S3 (Simple Storage Services)
+
+11) RDS (Relational Databases)
+
+12) IAM (User Management)
+
+13) Bean Stack (Web application execution)
+
+14) AWS Lambdas (Serverless Computing)
+
+15) Billing Overview
+
+
+==========================
+What is Operating System
+==========================
+
+=> OS is a Mediator between user and computer
+
+=> Wihtout OS we can't use any computer
+
+=> Using OS we can run applications in computer.
+
+Ex : Windows, Linux, Unix, Mac, Android, IOS etc......
+
+=============
+Windows OS
+=============
+
+-> It is developed by Microsoft
+
+-> It is GUI based OS (Graphical User interface)
+
+-> It is commercial OS (we need to purchase)
+
+-> Windows is single user based OS
+
+-> Security Features are less (anti-virus is requied)
+
+-> Windows is recommended for personal use
+
+	Ex: browsing, watch movies, play games, online classes.....
+
+-> Windows not recommened to setup Infrastructure
+
+   Ex : Database, web server, app server, backup , storage etc...
+
+
+===========
+Linux OS
+==========
+
+-> It is community based OS
+
+-> Linux is free & open source
+
+-> Linux is Multi User based OS
+
+-> Security features are very good in linux
+
+	(Anti-virus not required)
+
+-> Linux is CLI based OS (Command Line Interface)
+
+-> It is highly recommended to run servers
+
+  Ex : database, web server, docker, jenkins, k8s, sonar, nexus
+
+===============
+Linux History  
+===============
+
+-> Linux OS developed by 'Linus Torvalds'
+
+		Unix OS
+
+		Minux
+
+		(Li) nus Torvals + Mi(nux) = Linux
+
+
+-> Linus Torvalds released linux os into market with source code...
+
+-> Many s/w companies downloaded linux source code and modified according to their requirement and released into market with their brand names those are called as 'Linux Distributions'
+
+				- Amazon Linux
+				- Ubuntu
+				- Red Hat (community & enterprise)
+				- Fedora
+				- CentOS
+				- SUSE
+				- Kali
+				- Debian ..... 200+

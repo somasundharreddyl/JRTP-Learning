@@ -167,3 +167,6 @@ Note: If CI CD job execution got failed then we need to check job execution logs
 Note: For production deployment seperate release team will be available.
 
 Note: Production Jenkins server will be seperate.
+
+Note : How Do you restore and maintain Jobs when Disaster occurs in Linux Machine?
+     - By Installing Thin Backup Plugin.

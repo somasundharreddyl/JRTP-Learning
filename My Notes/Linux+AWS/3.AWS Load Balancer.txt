@@ -1,0 +1,317 @@
+=============
+AWS Cloud
+=============
+
+1) What is Infrastructure?
+  - The Resources Required to Run Proj or Comapny.
+
+  - Machines,Web Servers, Application Servers, DB Servers, Load Balancer, Network, Power, Storage, Security, Monitoring.
+
+2) What is On-Prem infrastructure?
+   - Everything we need to purchase, manage and maintain.
+
+3) Challenges with On-Prem Infrastructure?
+   - Security,Privacy,Avaialbility, Poor Network Issue, Disaster Recovery.
+
+4) What is Cloud Computing?
+
+    CC is the on-demand delivery of IT resources over the internet with pay-as-you-go   
+    Pricing.
+
+    The process of delivering IT resources over the internet with pay as you go model.
+    -AWS,Google Cloud, Microsoft Azure,Salesforce,IBM,Alibaba,Oracle.
+
+5) Benefits of Cloud Computing?
+   Instead of Buying,Owning and maintaining physical Data centers and servers.You can access them from Cloud Providers.
+ 
+  a.Pay as You Go
+  b.Low Cost
+  c.Scalability
+  d.Availability
+  e.Security
+  f.Backup
+  g.Unlimited Storage
+
+6) AWS Introduction
+
+7) AWS Services Tour
+
+8) Working with AWS Services
+
+Note :
+  Mumbai - 3 Datacenters(Availability Zones)(2016 EST)
+  Hyderabad - 3 AZ or Datacenters (2022)
+
+  Total 105 AVailability Zones.
+
+
+==============
+AWS Services
+==============
+
+=> We have 200+ services in AWS cloud platform....
+
+1) EC2 : Elastic Compute Cloud : To create virtual servers
+
+2) S3 : Simple Storage Service : Unlimited Storage
+
+3) RDS : Relational Database Service (Oracle, MYSQL)
+
+4) Route 53 : Domain Name Service (domain mapping)  (DNS Run on Port 53)
+
+5) IAM : Identity & Access Mgmt (users, groups, permissions)
+
+6) Beanstack : To run web applications
+
+7) AWS Lambdas : Serverless computing
+
+
+=============
+EC2 Service
+=============
+
+=> EC2 stands for Elastic Compute Cloud
+
+=> EC2 is used to create virtual servers (machines)
+
+=> EC2 is one of the most famous service in AWS cloud
+
+=> EC2 is a  paid service (hourly billing)
+		
+		9:00 AM - 9:15 AM : 1 hour bill
+
+		9:30 AM - 9:40 AM : 1 hour bill
+
+=> To encourage learners, AWS provided "t2.micro" as free of cost for 1 year. Monthly 750 hours.
+
+================
+EC2 Components
+================
+
+1) AMI : Represents softwares configuration (os, server...)
+
+	Ex : Windows AMI, Amazon Linux AMI, Ubuntu AMI....
+
+2) Instance Type : Machine configuration
+
+	Ex: t2.micro(1GB), t2.medium(4GB), t2.large(8GB)....
+
+3) Key Pair : Public key & private key
+
+		- AWS will store public key
+		- we will get private key
+
+Note: one key pair we can use for multiple ec2 instances.		
+
+4) VPC : Network for EC2
+
+5) Security Group : Firewall (inbound & outbound)
+
+		Windows => RDP Protocol => 3389 Port Number
+		Linux => SSH Protocol => 22 Port Number
+		Webserver => HTTP Protocol => 80 Port Number
+		HTTPS => 443
+		MySQL => 3306
+
+	=> Inbound rules are used to allow incoming traffic
+	=> Outbound rules will allow outgoing traffic
+
+Note : One security group we can use for multiple ec2 instances.	
+
+6) Storage : EBS Volumes (hard disc/ssd)
+
+			Windows : 30 GB (default)
+
+			Linux : 8 GB (default)
+
+Note: Max capacity for EC2 VM is 16 TB.
+
+
+======================
+Types of IPs in AWS
+======================
+
+=> We have 3 types of IP's
+
+1) private ip : Fixed IP address for internal communication(Resources Which are inside AWS).
+
+2) public ip : Dynamic IP. For external communication.
+
+		13.127.226.25 (firtime)
+		35.154.28.3 (after restart)
+		15.207.24.103 (elastic ip)
+
+3) elastic ip : Fixed public ip (it is commercial)
+
+===========================
+Lab practice on Elastic IP
+==========================
+
+Step-1 : Allocate Elastic IP (getting from AWS)
+
+Step-2 : Associate elastic ip to EC2 instance
+
+Step-3 : Re-start EC2 instance( ip will not change)
+
+Step-4 : De-Associate elastic ip from ec2
+
+Step-5 : Release elastic ip to aws.
+
+===============
+Load Balancer
+===============
+
+=> When we deploy our application in one server then below are the problem.
+
+1) All request coming to one server
+
+2) Burden will be increased on server
+
+3) Response delay for customer
+
+4) Server Crash due to heavy work load
+
+5) Single Point of failure
+
+Note: To overcome above problems we will use LOAD balancer in relatime to run our applications.
+
+
+=> It is used to distribute load to multiple servers.
+
+=> We have below advantages with Load Balancer...
+
+	1) App will run in multiple servers
+
+	2) Incoming requests will be distributed
+
+	3) Burden will be reduced
+
+	4) Responses will be faster for customers
+
+	5) High Availability of application
+
+
+=> When request comes to Load Balancer, it will distribute the load to multiple servers in round robbin fashion.
+
+
+=====================
+What is user data ?
+=====================
+
+=> It is used to execute the script while launching EC2 VM.
+
+Note: User data will execute only once when the machine is started.
+
+#! /bin/bash
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 1</h1></html>" > index.html
+service httpd start
+
+
+=======================================
+Process to Setup Load Balancer in AWS
+=======================================
+
+1) Create Security Group with below Protocols in Inbound Rules
+
+		SSH - 22
+		HTTP - 80
+
+	SGName : ashokit_Security_group
+
+
+2) Create first EC2 instance (EC2-1) and Host Web Application
+
+Note: Configure below script as 'User Data' at the time of launching the instance
+
+#! /bin/bash
+
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 1</h1></html>" > index.html
+service httpd start
+
+3) Create second EC2 instance (EC2-2) and host web application
+
+Note: Configure below script as 'User Data' at the time of launching the instance
+
+#! /bin/bash
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 2</h1></html>" > index.html
+service httpd start
+
+4) Create Target Group and attach both ec2 instances created above
+
+5) Create Load Balancer ( ALB ) and attach target group
+
+		Scheme : Internet facing
+
+		Select : Target Group 
+
+		Listner : HTTP : 80
+
+		Security Group : ashokit_Security_Group
+
+Note: Once Load Balancer created, DNS will be generated 
+
+5) Send a request to Load Balancer DNS URL and see the response 
+
+ (it should distribute traffic to both servers)
+
+==========
+Note
+==========
+1) DELETE Load balancer
+2) Delete EC2 instances
+
+=======================
+What is Auto Scaling
+======================
+
+=> Auto Scaling groups are collections of Amazon EC2 instances that enable automatic scaling and fleet management features. These features help you maintain the health and availability of your applications.
+
+=> We have below advantages with Auto Scaling
+
+1) fault tolerance
+
+2) cost management
+
+3) high availability
+
+
+======================
+EC2 service Summary
+======================
+
+1) What is EC2 & why ?
+
+2) What is AMI ?
+
+3) What is instance type ?
+
+4) What is Key pair ?
+
+5) What is Security Group
+
+6) What is EBS volume
+
+7) How to launch and connect with Windows VM
+
+8) How to launch and connect with Linux VM
+
+9) Types of IPs in AWS
+
+10) What is user data ?
+
+11) What is Load Balancer
+
+12) LBR setup with target group
+
+13) Auto Scaling Group
+
+
