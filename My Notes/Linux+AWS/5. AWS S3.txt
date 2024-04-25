@@ -8,13 +8,13 @@ AWS S3
 
 => S3 works based on Object storage (object=file)
 
-=> S3 is a paid service (for storing & for retriving)
+=> S3 is a paid service (for storing & for retrieving)
 
 => S3 maintains data using buckets concept
 
 => Bucket means group of objects
 
-		ex : netflix_tollywood_movies_bucket
+		ex :     netflix_tollywood_movies_bucket
 			 netflix_bollywood_movies_bucket
 			 netflix_hollywood_movies_bucket
 
@@ -22,11 +22,37 @@ Note: When we create bucket, aws will generate one URL for that.
 
 => When we upload object in the bucket then object url will be generated.
 
+=> Bucket Name should be Globally Unique.
+
+=> Using S3 service we can host static website also.
+
+=================================
+Static website hosting using s3
+=================================
+
+=> Website means collection of web pages (html + css + js)
+
+Step-1 : Create S3 bucket
+
+			- Enable ACL
+			- Allow Public Acc
+
+Step-2 : Upload website files (index.html & error.html) as objects in bucket
+
+			- Grant Public Read Access
+
+Step-3 : Enable Static Website hosting
+
+			(bucket -> properties -> Static website hosting)
+
+Step-4 : Access website URL
+
+
 =================
 S3 Lab Practice
 =================
 
-1) Create bucket in s3
+1) Create bucket in s3. a)Enable ACL(access to People)
 
 2) upload object in s3
 
@@ -41,4 +67,9 @@ Assignment
 			- course price
 			- course image
 
-Note: Course image should be stored into AWS s3 bucket and course info should be stored into db table.			
+Note: Course image should be stored into AWS s3 bucket and course info should be stored into db table.	
+
+Note: To implement this task we need IAM user with S3FullAccess & Security Credentials of IAM user.
+
+Note: We need to use AWS SDK to perform this operation.(Not AWS User Interface or Aws CLI).
+		

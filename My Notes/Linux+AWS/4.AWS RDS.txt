@@ -65,8 +65,8 @@ Steps to create MYSQL DB using AWS RDS
 		Engine Option : MySQL
 		Template : Free Tier
 		DB instance Identifier : ihis (Note : you can give anything)
-		Username : admin
-		Password : Choose a passord
+		Username : (admin)
+		Password : Choose a passord (Password123)
 	
 
 4) Click on 'Create Database' (It will take few minutes of time to create)
@@ -94,6 +94,12 @@ Username : admin
 Password : AshokIT2024
 
 Initial DB name : jrtpdb
+
+-------------
+Application-Properties:
+-------------
+1.Replace localHost with EndPoint.
+2.Replace username and Password with RDS Credentials(admin & Password).
 
 
 ==========

@@ -1,0 +1,53 @@
+1.Spring MVC module available in Spring Framework.
+2.In Spring 1.x Version we have Spring MVC Module and Spring Web MVC modules.
+3.Spring 2.x version Web Module and MVC module are combined and released Spring Web MVC Module.
+4.Spring MVC module is used to develop below type of Applications.
+     - Web Application.
+     - Distributed Application.
+5.This Spring Web MVC module is developed based on 2 Design Pattens.
+     - MVC Design Pattern
+     - Front Controller Design Pattern.
+
+
+
+Spring MVC Components:
+1.Front Controller(Dispatch Servlet):
+    - Responsible to perform Pre-Processing and Post Processing of incoming Request.
+    - EX: capturing form data can be consider as Pre-Process and Sending Response back     
+           to client in client Understandable Form.
+  Note : In Spring Web MVC,we will use DispatcherServlet as Front Controller.  
+          DispatcherServlet  is a pre-defined Servlet provided by Spring-MVC module.
+2.Handler Mapper:
+    - Pre-defined class in Spring MVC.
+    - Handler Mapper is Responsible to identify Request Handler(Controller-handles 
+              incoming Req).
+3.Controller:
+    - Outdated Predefined Controllers - simpleFornController,AbstractCommandController,
+                                  MultiActionController.
+    - Latest - define @Controller annotation.
+4.ModelAndView:
+   - Predefined Class in Spring MVC Module.
+5.ViewResolver:
+    - In Spring MVC,we have Multiple View Resolver Classes.
+    - Ex: InternalResourceViewResolver,URLBasedViewResolver,XMLViewResolver.
+    - Responsible for finding view Files(Location or Extension)
+6.View Component: 
+    - It is Responsible to Render Model Data on View File.
+
+
+
+
+Spring MVC Architecture(ScreenShot):
+
+Step-1:Sending Http Request from client to Dispatch Servlet.
+step-2:DispatcherServlet(DS) don't know location of Controller and its method.DS sends request to Handler Mapper.
+Step-3:Handler Mapper sends location of controller and its Method to DS.
+Step-4:DS servlet sends Req to Controller.Controller process the Request.
+Step-5:Controller send MAV(ModelAndView is class contains Model(Data) and view FileName) to DS.
+Step-6:DS send MAV Class Obj to ViewResolver to know location of view FileName(.jsp).
+Step-7:ViewResolver send location of View File.
+Step-8:DS send MAV(Data & View File(.jsp)) to location sent by ViewResolver.
+Step-9:View Component render MAV(Data & View File(.jsp)).
+Step-10:DS Send Response to Client.
+
+  

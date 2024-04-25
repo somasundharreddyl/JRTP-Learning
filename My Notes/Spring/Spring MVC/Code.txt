@@ -1,0 +1,249 @@
+Option-1: Through HttpServletRequest
+-------------------------------------
+--------------------------------------
+@RequestMapping("/")
+public String homePage(){
+return "index";
+}
+
+index.jsp:
+----------
+<form action="add">
+<input type="text" name="num1">
+<input type="text" name="num2">
+<input type="submit" name="num1">
+</form>
+
+@RequestMapping("/add")
+public String addNumbers(HttpServletRequest req)
+{
+int i = Integer.parseInt(req.getParameter("num1"));
+int j = Integer.parseInt(req.getParameter("num2"));
+int num3=i+j;
+HttpSession session = req.getSession();
+session.setAttribute("num3",num3);
+return "result";
+}
+
+result.jsp:
+-----------
+<h1>Result is : ${num3} </h1>
+
+
+
+Option-2 : Through RequestParam
+-------------------------------
+------------------------------
+
+@RequestMapping("/")
+public String homePage(){
+return "index";
+}
+
+index.jsp:
+----------
+<form action="add">
+<input type="text" name="num1">
+<input type="text" name="num2">
+<input type="submit" name="num1">
+</form>
+
+@RequestMapping("/add")
+public String addNumbers(@RequestParam("num1") int a,@RequestParam("num2") int b, HttpSession session)
+{
+int num3=a+b;
+session.setAttribute("num3",num3);
+return "result";
+}
+
+result.jsp:
+-----------
+<h1>Result is : ${num3} </h1>
+
+
+Option-3: Removing HttpSession(Using ModelAndView) :
+-----------------------------------------------------
+-----------------------------------------------------
+
+public String homePage(){
+return "index";
+}
+
+index.jsp:
+----------
+<form action="add">
+<input type="text" name="num1">
+<input type="text" name="num2">
+<input type="submit" name="num1">
+</form>
+
+@RequestMapping("/add")
+public ModelAndView addNumbers(@RequestParam("num1") int a,@RequestParam("num2") int b)
+{
+int num3=a+b;
+ModelAndView mv=new ModelAndView();  |     
+mv.setViewName("result");            |   => ModelAndView mv=new ModelAndView("result");
+mv.addObject("num3",num3);
+return mv;
+}
+
+result.jsp:
+-----------
+<h1>Result is : ${num3} </h1>
+
+
+
+Option-4: Using Model.
+----------------------
+----------------------
+
+public String homePage(){
+return "index";
+}
+
+index.jsp:
+----------
+<form action="add">
+<input type="text" name="num1">
+<input type="text" name="num2">
+<input type="submit" name="num1">
+</form>
+
+@RequestMapping("/add")
+public String addNumbers(@RequestParam("num1") int a,@RequestParam("num2") int b,Model model)
+{
+int num3=a+b;     
+model.addAttribute("num3",num3);
+return "result";
+}
+
+result.jsp:
+-----------
+<h1>Result is : ${num3} </h1>
+
+Note:
+You can Replace Model with ModelMap.
+
+===========================================================================================
+     Option-1:RequestParam
+----------------------------
+
+       @GetMapping("/")
+	public String loadPage() {
+		return "index";
+	}
+	
+
+       index.jsp:
+       ----------
+       <form action="addStudent">
+       <table>
+        <tr>
+            <td>Enter Student ID : </td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>Enter Student Name : </td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Enter Student Branch : </td>
+            <td><input type="text" name="branch"></td>
+        </tr>
+        <tr><input type="reset" value="reset"></tr>
+        <tr><input type="submit" value="submit"></tr>
+        </table>
+        </form>
+
+
+
+
+
+	@GetMapping("addStudent")
+	public String addStudent(@RequestParam("id") int studId,@RequestParam("name") String studName,@RequestParam("branch") String Studbranch, Model model) {
+
+             Student stud=new Studen();
+                stud.setId(studId);
+                   ""  ""
+                model.addAttribute("stud",stud);
+		return "result";
+	}
+
+
+     result.jsp:
+    -------------
+     <h3>Registered Student Datails : ${student}</h3>
+
+==========================================================================================
+
+         Option-2: ModelAttribute:
+        ---------------------------
+
+
+       @GetMapping("/")
+	public String loadPage() {
+		return "index";
+	}
+	
+
+       index.jsp:
+       ----------
+       <form action="addStudent">
+       <table>
+        <tr>
+            <td>Enter Student ID : </td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>Enter Student Name : </td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Enter Student Branch : </td>
+            <td><input type="text" name="branch"></td>
+        </tr>
+        <tr><input type="reset" value="reset"></tr>
+        <tr><input type="submit" value="submit"></tr>
+        </table>
+        </form>
+
+
+
+
+
+	@GetMapping("addStudent")
+	public String addStudent(@ModelAttribute Student student,Model model) {
+                model.addAttribute("stud",stud);
+		return "result";
+	}
+
+                          (or)
+
+        @GetMapping("addStudent")
+	public String addStudent(Student student) {
+                model.addAttribute("student",student);       ---------
+		return "result";
+	}
+                                                                      Student same.
+
+        result.jsp:
+        -------------
+        <h3>Registered Student Datails : ${student}</h3>      --------
+------------------------------------------------------------------------------------------
+
+@ModelAttribute
+ Public Void modelData(Model model){
+    model.addAttribute("name","Aliens");
+ }
+
+Note: It will call before every Requesting call.
+
+result.jsp:
+        -------------
+        <h3>Registered Student Datails : ${student}</h3>  
+        <h3>Welcome : ${name}</h3>
+
+
+
+
+

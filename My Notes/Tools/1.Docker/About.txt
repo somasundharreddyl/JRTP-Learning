@@ -34,7 +34,7 @@ Container is an Virtual Machine(Linux) Where an application is Running.
 15. Virtualization:
    - Running one Operating System in another Operating System.
 16. Port Mapping :
-    - To access the Appllication that is Running in Container, we Need to establish the Connection btw our Local System Operating System to Virtual Linuc Machine(Container).
+    - To access the Appllication that is Running in Container, we Need to establish the Connection btw our Local System Operating System to Virtual Linux Machine(Container).
 
 
 

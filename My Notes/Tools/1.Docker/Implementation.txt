@@ -138,7 +138,7 @@ Naming Convention : Dockerfile, ashokitdockerfile
   :wq        (write+quit)
   cat Dockerfile           => show content in DockerFile.
 
-  docker build -t app1 . =>(Building DockerFile)  -t=tag  app1=dockerImageName (Space     
+  docker build -t app1 . =>(Creating DockerImage)  -t=tag  app1=dockerImageName (Space     
                               dot)-at last helps to check dockerfile in currentdirectory
 
   docker images
@@ -378,6 +378,6 @@ Interactive Mode vs Detached Mode :
 - In Interactive Mode, Logs will be printed.
 
 
-   
+   git remote add origin https://github.com/somasundharreddyl/CRUDOperations.git
     
 

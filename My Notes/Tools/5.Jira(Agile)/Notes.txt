@@ -143,3 +143,101 @@ Note: Retro happens monthly once.
 ==============================
 JIRA (Project Mgmt Software)
 =============================
+=> JIRA S/w developed by Atlasian company.
+
+=> JIRA is commercial software (we can use trial version)
+
+=> JIRA is used as project mgmt s/w...
+
+		- Creating stories
+		- Story Assignment
+		- Story Status
+		- Sprint Reports
+		- Project Tracking
+
+=> JIRA is also used as Bug Reporting tool.
+
+
+=> Backlog stories
+=> Story creation
+=> Story Points
+=> Sprint Planning
+=> Sprint
+=> Story Assignment
+=> Story Status
+=> Retrospective
+
+
+
+============ Sending workupdate in email========================
+
+Subject : Scrum Update | Ashok Bollepalli
+
+Hi Steve,
+
+Greetings for the day..!!
+
+Today i am unable to join scrum call due to my person work.
+
+Please find by work status below
+
+I am working on story AA-7897 (IN Progress)
+
+This is targeted for tomorrow.
+
+I don't have any issues to complete my story.
+
+Thanks,
+Ashok.
+
+================= Sending Leave Request email ====================
+
+Subject : OOO Request | Ashok Bollepalli
+
+Hi Steve,
+
+Greetings for the day..!!
+
+I will be OOO from 10-Mar to 14-March due to function at home..
+
+Kindly approve my leave request...
+
+Thanks,
+Ashok.
+
+================== Jenkins Pipeline Request ====================
+
+To : amazon.devops@amazon.com
+
+Subject : Jenkins Pipeline Creation Request | AA-5
+
+Hi DevOps Team,
+
+Please create jenkins cicd pipeline for 'Orders' microservices.
+
+Git Hub Repo : <url>
+
+@manager : Kindly approve this request
+
+Thanks,
+Ashok.
+
+=======================================================================
+
+OOO  => Out of office
+
+ASAP => As soon as possible
+
+FYI => For your information
+
+PFB => Please find below
+
+ping =>  Send a message in teams
+
+EOD => End of the day
+
+DM => Direct message
+
+DL => Distribution List
+
+========================================================================

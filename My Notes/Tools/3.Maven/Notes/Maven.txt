@@ -31,7 +31,7 @@ Maven Setup
 
 ### Reference Video : https://www.youtube.com/watch?v=hV1OWzYpzxo
 
-Step-1 : Install Java + Setup JAVA_HOME + Setup Java Path
+Step-1 : Install Java(JDK) + Setup JAVA_HOME + Setup Java Path
 
 		JAVA_HOME = C:\Program Files\Java\jdk-17
 
@@ -224,7 +224,7 @@ Maven Repositories
 
 => Central Repository will be maintained by Apache org. It is public repository.
 
-=> Remote Repositories are called as private repositories.	These are project/company specific.
+=> Remote Repositories are called as private repositories.These are project/company specific.
 
 		Ex: Nexus repo & JFrog Repo.
 
@@ -262,7 +262,7 @@ Maven Multi Module Project
 				- admin   (module-1)
 				- reports (module-2)
 
-Note: When we execute maven goals parent project then it will reflect on modules also.
+Note: When we execute maven goals on parent project then it will reflect on modules also.
 
 
 ========
