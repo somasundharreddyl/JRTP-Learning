@@ -1,0 +1,105 @@
+#########################################
+Working with Spring Cloud API Gateway
+########################################
+
+1) Create Spring boot application with below dependencies
+
+		-> eureka-client
+		-> cloud-gateway
+		-> devtools
+
+2) Configure @EnableDiscoveryClient annotation at boot start class
+
+3) Configure API Gateway Routings in application.yml file like below
+
+-------------------application.yml file---------------------------
+server:
+  port: 3333
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: welcome-api
+        uri: lb://WELCOME-API
+        predicates:
+        - Path=/welcome
+      - id: greet-api
+        uri: lb://GREET-API
+        predicates:
+        - Path=/**
+        
+  application:
+    name: CLOUD-API-GATEWAY
+-----------------------------------------------------------------------
+
+
+welcome-api  ==> 2 instances ==> 8081 & 8082 ==> /welcome
+
+greet-api ==> 1 instance  ==> 2222  => /greet
+
+api-gateway ==> 1 instance ==> 3333
+
+
+http://localhost:3333/welcome
+
+http://localhost:3333/greet
+
+-------------------------------------------------------------------
+
+In API gateway we will have 3 types of logics
+
+1) Routes
+
+2) Predicates
+
+3) Filters
+
+-> Routing is used to defined which request should be processed by which REST API in backend. Routes will be configured using Predicate.
+
+-> Predicate : This is a Java 8 Function Predicate. The input type is a Spring Framework ServerWebExchange. This lets you match on anything from the HTTP request, such as headers or parameters or url-patterns.
+
+-> Filters are used to manipulate incoming request and outgoing response of our application.
+
+Note: Using Filters we can implement security also for our application.
+
+
+-----------------------------------------------------------------------------
+@Component
+public class MyFilter implements GlobalFilter {
+
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+		System.out.println("filter() - executed.....");
+		
+		ServerHttpRequest request = exchange.getRequest();
+
+		HttpHeaders headers = request.getHeaders();
+		Set<String> keySet = headers.keySet();
+		
+		// validate request
+		if(!keySet.contains("secret")) {
+			throw new RuntimeException("Invalid Request");
+		}
+		
+		List<String> list = headers.get("secret");
+		if(!list.get(0).equals("ashokit@123")) {
+			throw new RuntimeException("Invalid Token");
+		}
+		
+
+		return chain.filter(exchange);
+	}
+}
+
+
+-------------------------------------------------------------------------------------
+
+-> We can validate client given token in the request using Filter for security purpose
+
+-> We can write request and response tracking logic in Filter
+
+-> Filters are used to manipulate request & response of our application
+
+-> Any cross-cutting logics like security, logging, moniroing can be implemented using Filters.

@@ -1,0 +1,65 @@
+Services are the building block of angular application which contains complete business logic. In Every angular project we have services which contains the business logic related to gathering and providing the data from components by interacting with back end.
+
+Also in Angular, services can provide depency injection principle which manages the state management and reduces the burden on developer. Also this principle helps in communcating with in multiple components==> component to component communication can be achieved through services
+
+Two types of Services ==> 1) Interacting with back end with REST Webservice via HTTP Protocol
+
+2) Creating business logic layer between multiple components (State Mgmt).
+
+
+REST WEBSERVICE: Heterogenious Communication is called as webservice.
+
+Two different Programming Languages want to communicate with each other WebService > SOAP/REST Popularly used HTTP Normal web application also works on HTTP and REST Services also works on HTTP protol => Its very Popular and it takes both JSON and XML are the media for communication. Mostly both FE and BE are aligned with JSON format and takes the data and exchanges the data in JSON format. Inside REST Protocol HttpClient Interface was developed by Angular Community for Performing CRUD Operation. Develop no need to write REST webservice code and we can use the existing infrastrcture itself for interacting with Back End
+
+HTTP POST => Creating the Data, HTTP GET Retrieving the Data, HTTP PUT==> Updating the Data, HTTP Delete ==> Deleting the Data
+
+Angular has predefined libray where we can easily convert typescript object into JSON Object as well as JSON object into TYPEScript Object.
+
+
+
+
+                             Invoking our own Angular Service
+
+1) To create a service ==> we can use the command ng service <servicename> or ng s <servicename>
+
+2) Need to import HttpClient Interface which is part of "angular/common/http" which has all REST API Operations in this HttpClient API.
+
+3) To perform Asynchronous Operations in Angular especially working with Back ends, we can use Observable which will triggers the back end call using Asynchronous(Immediately Response won't come...it takes time) Fashion
+
+4)HttpClient Object will have all Http Opearations like GET, POST, PUT, DELETE Where developer no need to write any specific code for performing rest invocation
+
+5) In Main.ts file we need to Bootstrap HttpclientModule along with Appcomponent
+
+
+bootstrapApplication (AppComponent, {
+providers:[
+provideHttpClient(withFetch())
+]
+})
+
+
+
+export class ProductsService {
+
+  constructor(public http:HttpClient) { }
+
+  public getAllProducts():Observable<any>{
+    return this.http.get("https://fakestoreapi.com/products");
+  }
+}
+
+
+
+
+
+
+export class ProductsComponent implements OnInit {
+  products: any[] = [];
+  constructor(public productsService:ProductsService){
+  }
+  ngOnInit() {
+    this.productsService.getAllProducts().subscribe((res)=>{this.products=res; console.log(this.products); },
+  (error:HttpErrorResponse)=>{console.log('Error message :',error);}
+  )
+  }
+}

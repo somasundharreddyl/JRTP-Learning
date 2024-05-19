@@ -1,0 +1,54 @@
+                           Modern Web Application Architecture
+
+As AJAX, GWT, BackBone etc..are not for web application which is dynamic, Hence a new framework is introduced which we can refer as Modern Web Application Architecture. This we can call as "Single Page Application" ==> SPA
+
+Though our website contains lot of web pages, but only one page will be shipped to client browser and entire website will run through Javascript Engine. Only one page ==> index.html will be downloaded from server to client browser.
+
+                            Life Cycle of Modern Web Application
+
+1) When we browser first time == single page will be downloaded from server to client ==> index page ==> Place Holder of Web page
+
+ 2) When we click any option like Savings/PersonalLoan ===> NODE js Server will process this request by navigting to respective component, which is going to merge the 3 files HTML, CSS, SCRIPT ==> into one js file like savings.js, ploan.js,credit.js, withdraw.js
+
+ 3) After this JS is downloaded to client side browser ==> DOM will execute this JS and renders the page. Here server only prepares cached JS pages and all JS pages are ready when we build the application
+
+
+                                     Angular Page LifeCycle
+
+1)We Created angular project with the command ng new <projectname> i.e. ng new first==> then angular installed lot of files which are required for web application setup. After that we moved to command prompt with first folder ===> we gave ng serve. This command compiles the entire angular code and packages into J5 files and push these js files to browser via node JS Server which is listening to default port number 4200. After that we browse http://localhost:4200/> We got webpage. If we are sucessfully web page that means angular is working fine and we are good for development.
+
+2) View Source of the page is not matching with the browser content which indicates that this page is not rendered from server.
+
+After browser is executing the js files ==> Output of JS file is displayed on browser that why we can refer this as client driven archiecture where server is not involved in page processing. 3) When we browse the angular application ==> only first time index.html is downloaded to browser which is the place holder for body tag where js output will be dynamically replaced by Angular ==> Hence we can call this as single page application
+
+4) If we remove <app-root></app-root> in the index.html ==> Angular dispalys empty page => This means that app-root section is the body tag generated from client side. Totally 3 files are getting generated during build process which are polyfills.js,main.js, 
+styles.css. 
+In the Old Version of Angular extra files i.e. vendor.js.runtime.js,style.js
+
+5)main.js ==> Actual Conent which is displayed on the browser. If we click on products page ==> Products output will be added to main.js file by Angular, if we click on payment page ==> payment output will be added to main.js file. This means that, any page you are navigating at run time Angular will load that component like product, payment etc..and the ouput of component will be added to main.js file.
+
+6)polyfills.js==> This will create a js script compatible with browser and platform
+
+7)style.css ==> This will contains all the external styles (if we use any bootstrap or any other stylesheet)
+
+8) vendor.js ==> During our application development if we use any third party libraries like Sync Fusion, Angular Material, NG RX. all these libraries will be loaded through vendor.js file .
+
+9) runtime.js ==> It will create a run time node js i.e opening the port 4200 and starting our server and generating the files. main.js,polyfills.js
+
+10) Angular project loads main.ts file which is bootstrap file. Bootstrap means starting point of execution. main.ts by default loads App Component and Appconfig. App Component is the default component created by Angular and AppConfig is routing specific file. AppConfig we can discuss at routing topic.
+
+11) In Previous version of Angular, we have App Module and this will be loaded as part of main.ts. App Module Loads AppComponent and Routing Component. Both App Component and Routing Component are part of App Module.
+
+
+
+Angular 16 or Before Versions vs Angular 17(main.ts):
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+
+
+
+

@@ -1,0 +1,45 @@
+Pipes in Angular:
+------------------
+
+Pipe is an internal Angular Implementation which is used to transform the data while rendering to the DOM. This will change the actual data, and it only trasforms the data before rendering to HTML
+
+In Angular we have two types of pipes 1) Default Pipe and 2) Custom Pipe
+
+Default Pipe: Created by Angular and we can ready to use any where in the project Custom Pipe: Created by Developer based on requirement
+
+Default Pipe:
+
+1) UpperCase: Converts the small case string into Uppercase
+
+2) LowerCase: Converts the upper case string to Lower case
+
+3) Title Case: Converts the any string into Title Case
+
+4) Number Pipe: Converts any number to specific format prescribed below {{number:'x.y-z'}} x ==> Maximum number of digits before decimal y ==> Minimum number of digits after decimal
+
+z=> Maximum number of digits after decimal
+
+) Currency Pipe: It will add "$" Symbol before number and this is by default behaviour 5
+
+{{var_five currency}} ==> this will display $ Symbol
+
+{{var_five currency:"INR"}} ==> This will display "" Symbol
+
+{{var_five currency:"EUR"}} ==> This will display "€" Symbol
+
+{{var_five currency:"GBP"}} ==> This will display "E" Symbol
+
+6) Date Pipe: Default Format of the date is ==> Mon Apr 08 2024 19:53:10 GMT+0530 (India Standard Time) date|"dd-mm-yy" ==> 08-04-24, var_six | date:'dd-MMM-yy'}} ==> 08-Apr-24
+
+
+Custom Pipe:
+-------------
+
+If developer want to create a pipe with our own logic ==> Angular provides a custom pipe for this. To create a custom pipe, we can use ng generate pipe <pipename> (or) ng gp <pipename> ==> This will generate file with name as <pipename>.pipe.ts which has Pipe Transform Interface with abstract method transform.
+
+Developer need to override transform method with our own logic, and framework automatically this transform method and output of transform method will be returned to HTML.
+
+
+
+
+

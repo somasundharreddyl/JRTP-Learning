@@ -1,0 +1,44 @@
+==========================================
+Spring Security In-Memory Authentication
+==========================================
+
+-> In Memory Authentication means storing user credentials in the program for Authentication Purpose.
+
+-> This is not recommended for production.
+
+	@Bean
+	public InMemoryUserDetailsManager inMemoryUsers() {
+		
+		UserDetails ashokUser = User.withDefaultPasswordEncoder()
+									.username("ashok")
+									.password("ashok")
+									.authorities("ADMIN")
+	.build();
+		
+		
+		UserDetails johnUser = User.withDefaultPasswordEncoder()
+									.username("john")
+									.password("john")
+									.authorities("USER")
+	.build();
+		
+		return new InMemoryUserDetailsManager(ashokUser, johnUser);
+		
+	}
+
+
+	@Bean
+	public SecurityFilterChain securityConfig(HttpSecurity http) throws Exception {
+			
+		http.authorizeHttpRequests( (req) -> req
+				.antMatchers("/admin").hasRole(ADMIN)
+				.antMatchers("/user").hasAnyRole("ADMIN","USER")
+				.antMatchers("/").permitAll()
+				.anyRequest().authenticated()
+		).formLogin();
+		
+		return http.build();
+	}
+
+}
+

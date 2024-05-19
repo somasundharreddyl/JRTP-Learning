@@ -1,0 +1,144 @@
+Routings Running Notes:
+
+1) Before Angular 17, we need to add all our components to the global registraion module called as app.module.ts with routes constant. And we will import Both RouterModule and Routes Constant from angular/Router Package. In the Import we will instruct angular to load Router Module with our values, i.e. RouterModule.forRoot(<ourroutings declaration>)
+
+2)In Angular17, we already have a file app.route.ts ==> Here we will write all our components declaration here and this file will be already loaded by Angular in app.config.ts in the Providers Section ==> providers: (provide Router(routes)]
+
+3) We are going to develop mini project with 6 components with below hierarchy
+
+1) Home Menu ==> While loads the Home Component (Home.*ts,html,css)
+
+2)Product Menu => It will load Products List Component (products.".ts,.html,.css)
+
+View Product Menu => Loads the Product Component (product..ts,.html,.css)
+
+Edit Product Menu ==> Loads the Edit Product Component(editproduct.*.ts,".html,*.css)
+
+3) Users Menu => Loads the Users Component (users.".ts, "html,".css) >Loads the user Component (user.*.ts,*.html,*.css)
+
+4) Define the above definitions in app.route.ts file which is loaded by app.config.ts
+
+Inside Routes Constant file ==>
+
+{path:'',component:HomeComponent}, //http://localhost:4200 ==> It should Load Home Component
+
+{path: 'users', component: Users Component}, //http://localhost:4200/users ==> It should Load Users Component
+
+{path: 'products', component:Products Component}//http://localhost:4200/products ==> It should Load products Component
+
+5) Navigate to app.component.html ==> Remove all the bootstrap entries with home, users and product component mappings and write <router-outlet></router-outlet> which has dynamic bootstrapping with component given by Routing
+
+6) When we refer our routing path in href tag like <a href="/customers"> <a href="/products"> ==> By default server side rendering will happen which will violate the angular default behaviour. In place of href, if we use <routerLink> option which stop the server side rendering.
+
+<a routerLink="/products"></a>
+
+Note : imports: [RouterOutlet,RouterModule]
+
+7) routerLinkActive="active" this option will set the li tag with active tab indicator properly. If we are in customers ==> customer tab will be highlighted, if we are in products ==> products tab will be highlighted. At the same time for the first option like Home along with routerLinkActive, we need to use routerLinkActiveOptions =(exact:true) which will override the default behaviour.
+
+Ex:
+<ul class="nav nav-tabs">
+<li role="presentation" class="active"
+routerLinkActive="active"
+[routerLinkActiveOptions]="{exact:true}">
+<!--<a href="#">Home</a></li>-->
+<a routerLink="/">Home</a></li>
+</ul>
+
+8) Router.Navigate is the option availble in ts file if we want to change the current routing to new path this.route.navigate(['/products']) ==> where products should be defined in angular routes file.
+
+Ex:
+<button  class="btn btn-success" (click)="navigateHomepage()">HOMEPAGE</button>
+
+export class AppComponent {
+  constructor(private route:Router){}
+  navigateHomepage(){
+    this.route.navigate(['']);
+  }
+}
+
+
+9) Activated Route is an internal angular implemenation which will give current routing path on the browser. When we mention relative path in our angular routings always you need to go to home path and map accordingly
+
+Note:Activated Route is equal to current Path.
+
+Assume if we reload the products page ==> 
+this.route.navigate(['/product'],{relativeTo:this.activated Route}); =>currPath/products
+this.route.navigate([../product],{relativeTo:this.activated Route});
+
+Ex:
+constructor(private serversService: ProductsService, private route: Router,
+private actRoute:ActivatedRoute) { }
+
+onReload(){
+//this.route.navigate(['products']);
+this.route.navigate(['/products'],{relativeTo:this.actRoute})
+}
+
+Note : In RealTime, we always use absolute path.Not Relative Path.
+
+10) Routing with Dynamic Parameters:
+If we wan to have dynamic parameters in routing path ==> You can initialize with ":" => /users/:id/:name' ==> id and name are dynamic.
+
+Ex:
+const appRoutes:Routes=[
+{path:'',component:HomeComponent},
+{path:'customers', component:UsersComponent},
+{path:'customers/:id/:name', component: UserComponent}
+ ]
+
+
+
+11) If we wan to read the dynamic values in the URL ==> We can use Activated Route here. ActivatedRoute is the current path which is displayed here and to read the dynamic variables we can use snapshot object ==> this. Activatedroute.snapshot.params['<variable1>'];
+
+
+user?: {id: number, name: string};
+Constructor (private route: ActivatedRoute) { }
+ngOnInit() {
+this.user={
+id:this.route.snapshot.params['id'],
+name:this.route.snapshot.params['name']
+};
+}
+
+
+12) If we want to construct the dynamic URL from HTML, we can use RouterLink Option ==> if we want to construct URL => http://localhost:4200/users/10/Rahul ==> 
+<a [routerLink]=['/users', 10, 'Rahul']>
+
+13) When there is change in Routing values which requires page to be reloaded ==> By default routing will not push the latest data to component and developer need to subscribe the routing interface and on subscription we need to assign latest data.
+
+Ex:
+user:any={};
+Constructor (private route: ActivatedRoute) { }
+
+ngOnInit() {
+
+this.user={
+id:this.route.snapshot.params['id'], 
+name:this.route.snapshot.params['name']
+};
+
+this.route.params.subscribe(
+(params: Params) => {
+this.user.id=params['id'];
+this.user.name=params['name'];
+}
+);
+
+}
+
+
+----------------------------------------------------------------------------------------
+
+14) Child Routing:
+
+14) If we need to add child routings for main path ==> we got children property in routing declaration. By default when child routing is there it will main and child page at same time in the same window. In our example, user component loaded by users component. 
+
+{path: 'users', component: Users Component,
+children:[
+{path:':id/:name', component:UserComponent}
+]
+}
+
+
+

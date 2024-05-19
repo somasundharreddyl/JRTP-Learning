@@ -1,0 +1,55 @@
+1.ngOnChanges() => When we are getting input from Parent Component to Child Component then this ngOnChanges() will Execute.
+
+2.ngOnInit() => whenever a Component is created then this ngOnInit() is Initialized. It is Initialized only once.
+
+3.ngDoCheck() => In Some Conditions, ngOnChanges() won't execute eventhough We change value of Input which is coming from Parent Component.
+
+What are those Conditions?
+--------------------------
+if we are changing string character value,array value or object property.Here the reference of object is same, only the values in object are changing,not reference.In these conditions, ngOnChanges won't execute.
+
+For that we use ngDoCheck().
+
+4.ngAfterViewInit() => is executed when DOM Tree(View-HTML) is created.
+
+5.ngAfterViewChecked() => is Executed whenever there is an Element modification(style change,element deletion) happened on view.
+
+6.ngAfterContentInit() => 
+
+   child.html:
+   -----------
+   <p>This is Child Component<p>
+   <ng-content><ng-content>
+
+
+   Parent.html:
+   -------------
+   <p>This is Parent Component<p>
+   <app-child>
+    
+    <p> Won't display the content that writes here.If you want to display
+content that writes here then use ng-content in child.html                  </p>
+    <h2>{{testvariable}}<h2>
+   
+   </app-chil>
+
+ Note : whenever we are Projecting content in between <app-Child></app-child> from Parent to Child Component, then this ngAfterContentInit() is initialized.
+
+7.ngAfterContentChecked() => is execute whenever there is a change in content between <app-Child></app-child> like testVariable input,ngAfterContentChecked() is initialized.
+
+8.ngOnDestroy() => is execute when a component is changed or destroyed(like next page /home to /products).
+
+if you want to stop executing scroll bars functionalities in previous component then we implement that logic in ngOnDestroy().
+
+
+Note:
+Execute in EveryComponent : ngOnInit(), ngOnDestroy(), ngAfterViewInit(), ngAfterViewChecked()
+
+Execute when and only get Input fromParent Comp : ngOnChanges(),ngDocheck()
+
+Execute when and only if projecting content from Parent
+ to Child Component :  ngAfterContentInit(), ngAfterContentChecked()
+
+
+
+   

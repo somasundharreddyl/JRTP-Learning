@@ -1,0 +1,15 @@
+=================
+Load Balancing
+==================
+
+=> Distribute requests to multiple servers
+
+=> Run welcome-api in multiple instances.
+
+1) Remove port number configuration welcome api yml file
+
+2) Make changes in rest controller to display port number in response.
+
+3) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8081 and apply and run it.
+
+4) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8082 and apply and run it.	

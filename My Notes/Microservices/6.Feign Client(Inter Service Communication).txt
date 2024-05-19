@@ -1,0 +1,168 @@
+============
+FeignClient
+============
+
+=> It is used for interservice communication
+
+=> If one api communicate with another api with in the same application then it is called as Inter service communication.
+
+=> RestTemplate,Web Client are used to communicate with OuterSpace Services(Not Part of Application - belongs to third party Application).
+
+=>Normally, While Using RestTemplate and Web Client, we are Hardcoding the API url.So If we want to achieve Load Balancing or run our service in different server, it would be difficult.But This problem can be solved by FeignClient.
+
+=>FeignClient takes Application Name registered in Eureka Server to communicate.
+
+
+
+#################################
+Steps to develop WELCOME-API
+#################################
+
+1) Create Spring Boot application with below dependencies
+
+		- eureka-discovery-client
+		- starter-web
+		- devtools
+		- actuator
+		- zipkin
+		- admin-client
+
+               
+2) Configure @EnableDiscoveryClient annotation at boot start class
+
+3) Create RestController with required method
+
+4) Configure below properties in application.yml file
+
+-----------------------application.yml-----------------------------------------
+server:
+  port: 1111
+
+spring:
+  application:
+    name: WELCOME-API
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+-------------------------------------------------------------------
+
+5) Run the application and check in Eureka Dashboard (It should display in eureka dashboard)
+
+6) Check Admin Server Dashboard (It should display) (we can access application details from here)
+
+	Ex: Beans, loggers, heap dump, thred dump, metrics, mappings etc...
+
+
+7) Send Request to REST API method
+
+8) Check Zipkin Server UI and click on Run Query button
+	(it will display trace-id with details)
+
+
+#################################
+Steps to develop GREET-API
+#################################
+
+1) Create Spring Boot application with below dependencies
+
+		- eureka-discovery-client
+		- starter-web
+		- devtools
+		- actuator
+		- zipkin
+		- admin-client
+		- openfeign
+
+2) Configure @EnableDiscoveryClient annotation at boot start class
+
+3) Create RestController with required method
+
+4) Configure below properties in application.yml file
+
+-----------------------application.yml-----------------------------------------
+server:
+  port: 2222
+
+spring:
+  application:
+    name: GREET-API
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+-------------------------------------------------------------------
+
+5) Run the application and check in Eureka Dashboard (It should display in eureka dashboard)
+
+6) Check Admin Server Dashboard (It should display) (we can access application details from here)
+
+	Ex: Beans, loggers, heap dump, thred dump, metrics, mappings etc...
+
+7) Send Request to REST API method
+
+8) Check Zipkin Server UI and click on Run Query button
+	(it will display trace-id with details)
+
+
+==============================
+Interservice communication
+==============================
+
+=> Add @EnableFeignClients dependency in GREET-API boot start class
+
+=> Create FeignClient interface like below
+
+@FeignClient(value = "WELCOME-API")
+public interface WelcomeApiClient {
+	
+	@GetMapping("/welcome")
+	public String invokeWelcomeMsg();
+
+}
+
+=> Inject feign client into GreetRestController like below
+
+@RestController
+public class GreetRestController {
+	
+	@Autowired
+	private WelcomeApiClient welcomeClient;
+	
+	@GetMapping("/greet")
+	public String getGreetMsg() {
+		
+		String welcomeMsg = welcomeClient.invokeWelcomeMsg();
+		
+		String greetMsg = "Good Morning, ";
+		
+		return greetMsg.concat(welcomeMsg);
+	}
+
+}
+
+=> Run the applications and access greet-api method
+
+	(It should give combined response)
+
+

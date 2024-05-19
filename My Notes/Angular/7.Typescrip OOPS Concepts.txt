@@ -1,0 +1,240 @@
+/*
+
+Inhertiance ==>
+
+We can define classes with some functioanlity
+
+
+Single Level Inheritance, Multi Level Inheritance 
+
+Multiple Inheritance is not possible through Classes but its possible through Interfaces
+
+extends is the keyword can be used to reuse the functionality
+
+
+Order class ==> Order Functionality
+
+Payment Class ==> Payment Functionality
+
+Single Inheritance ==> One Class extends only one classes
+
+
+
+*/
+
+class class_one{
+    public fun_one():string{
+        return "Function One";
+    }
+}
+
+
+class class_two extends class_one{
+    public fun_two():string{
+        return "Function Two";
+    }
+}
+
+
+
+class class_three extends class_two{
+
+    public fun_three():string{
+        return "Function Three";
+    }
+
+}
+let obj:class_one=new class_one();
+console.log(" Class1 Instance Objectd ==>",obj.fun_one());
+
+let obj1:class_two=new class_two();
+console.log(" Class2 Instance Objectd ==>",obj1.fun_one())
+console.log(" Class2 Instance Objectd ==>",obj1.fun_two())
+
+
+let obj2:class_three=new class_three();
+
+console.log(" Class3 Instance Objectd ==>",obj2.fun_one())
+console.log(" Class3 Instance Objectd ==>",obj2.fun_two())
+console.log(" Class3 Instance Objectd ==>",obj2.fun_three())
+
+---------------------------------------------------------------------------------
+/*
+
+
+Polymorphism ==> Customization of Class
+
+OverLoading and OverRiding ==> Polymorphism
+
+
+*/
+
+
+class class1{
+
+    //Three Functions with same Name and diffent inputs parameters
+
+
+    public my_func(arg1:number,arg2:number):void;
+
+    public my_func(arg1:string,arg2:string):void;
+
+    public my_func(arg1:boolean,arg2:boolean):void;
+
+
+    public my_func(arg1:any,arg2:any):void{
+
+        console.log("Arguement1 ===> ", arg1);
+        console.log("Arguement2 ==> ",arg2);
+    }
+
+}
+
+
+//We can Also create an object in different way
+
+new class1().my_func("Without Object", "Class Execution");
+new class1().my_func(30,50);
+new class1().my_func(true,false);
+
+
+/*
+
+Arguement1 ===>  Without Object
+Arguement2 ==>  Class Execution
+Arguement1 ===>  30
+Arguement2 ==>  50
+Arguement1 ===>  true
+Arguement2 ==>  false
+
+*/
+
+
+/*
+var obj:class1=new class1();
+obj.my_func(10,20);   //Two Numbers
+
+
+var obj1:class1=new class1();
+obj1.my_func("Ashok","IT"); //Two Strings
+
+var obj3:class1=new class1();
+
+obj3.my_func(true,false); //Two Booleans
+
+
+
+
+
+Arguement1 ===>  10
+Arguement2 ==>  20
+Arguement1 ===>  Ashok
+Arguement2 ==>  IT
+Arguement1 ===>  true
+Arguement2 ==>  false
+
+*/
+
+
+
+/*
+
+
+OverRiding ==> Already some functionality will be there at parent level, but i want to customize this
+
+
+Car Class ==> Engine, Dash Board, Seats, Mats, AC 
+
+Maruti Class ==> Need to use the same Engine for Car Class 
+
+super key word is used to access parent class functionality in child class 
+*/
+
+class class1{
+    public dbFunc():string{
+        return "MYSQL Database is Conneted";
+    }
+}
+
+class class2 extends class1{
+     public dbFunc(): string {
+            return "MONGO DB is Connected";
+    }
+}
+
+class class3 extends class1{
+     public dbFunc(): string {
+            return super.dbFunc(); // Accessing class1 Functionality in Class3
+    }
+}
+
+console.log(new class1().dbFunc()) // This will Point to MY SQL
+
+console.log(new class2().dbFunc()) //This will point to MONGO DB
+
+console.log(new class3().dbFunc());// This will Point to MY SQL ==> We used Super Keyword
+
+/*
+Output
+MYSQL Database is Conneted
+MONGO DB is Connected
+MYSQL Database is Conneted
+
+*/
+
+
+-----------------------------------------------------------------------------------
+/*
+
+
+Static Members ==> Can be Accessed Directly by class itself and they are class level.
+
+We cant access static members through class objects
+
+We cant initialize the static members by using constructor keyword
+
+
+*/
+
+class staticclass{
+      static wish:string="Welcome to Static";
+
+    /*  constructor(){
+        this.wish="reinitialization";
+      }
+      */
+
+      static getWish():string{
+        return this.wish;
+      }
+}
+
+console.log("DataMember ===" , staticclass.wish);
+console.log("Member Function ===" , staticclass.getWish());
+
+/* Output
+
+
+DataMember === Welcome to Static
+Member Function === Welcome to Static
+
+*/
+--------------------------------------------------------------------------------
+interface student{
+name:string;
+method1():void;
+}
+
+interface student1 extends student{
+    id:number;
+}
+
+let obj:student1={
+    name:'sun',
+    id:22,
+    method1():void{console.log("Logging");}
+}
+
+console.log(obj.id);
+obj.method1();
+

@@ -1,0 +1,122 @@
+Directives are angular interfaces which are mainly used to manipulate the DOM i.e. to render dynamic DOM
+
+We have two types of Directives
+
+1) Predefined Directives
+
+2) Custom Directives
+
+
+
+Directives which are given by Angular framework called as Pre defined Directives. And the directives which are implemented by developer called as Custom Directives.
+
+Predefined Directives are classified into three types
+
+i) Structural Directive: These will start with "*" symbol.
+   --------------------
+Ex: *nglf ==> These directive used to render DOM Element based on a condition
+
+*ngFor ==> These directives used to iterate over collection of data ==> which forms DOM
+
+*ngSwitchCase ==> This directive used for case statment over multiple options
+
+
+
+ii) Event Based Directives: This directive handles all types of events like click, 
+  change, etc...
+
+(submit) ==> Submits the form ==> Transfers HTML data into typescript
+
+(click) ==> Click events ==> When button is cliked which invoke typescript function (change)==> When radiobutton/drop down changes ==> Invoke typescript function based on this change
+
+
+
+iii) Attribute Based directives: These will start with "[]"
+     ---------------------------
+[(ngModel)] ==> Two way Data Binding [(ngSwitch)] ===> Switch Case [(ngStyle)] ==> CSS Style
+
+
+
+
+--------------------------------------------------------------------------------
+
+Apart from above, Angular is giving some pre defined interfaces for our custom directive.
+
+If we want to create our own Custom Directive ==> ng generate directive <directivename> ==> This will create a directive file.
+
+
+1) ElementRef ==> This directive is used to access any DOM Element 
+
+ Ex:    export class HighlightdDirective implements OnInit{
+
+            constructor(private elementRef:ElementRef) { }
+
+            ngOnInit(){
+            this.elementRef.nativeElement.style.background="cyan"
+                      }
+
+              }
+
+
+2) Renderer2 ==> Advanced version of ElementRef same like ElementRef.
+
+Ex:     export class RenderDirective implements OnInit{
+
+           constructor(private renderd:Renderer2,private elementRef:ElementRef) { }
+
+              ngOnInit(): void {
+                  this.renderd.setStyle(this.elementRef.nativeElement,'background-  
+                                 color','green');
+                                }
+
+                            }
+
+
+3)HostBinding ==> Building DOM Element based on event.
+
+Ex:      
+ export class HostlistenerDirective {
+
+  constructor(private elementRf:ElementRef,private render2:Renderer2) { }
+
+
+  @HostListener('mouseenter') 
+  mouseover(eventData:Event){
+    this.render2.setStyle(this.elementRf.nativeElement,'background-color','red')
+  }
+
+
+  @HostListener('mouseleave')
+  mouseleave(eventData:Event){
+    this.render2.setStyle(this.elementRf.nativeElement,'background-color','green')
+  }
+}
+    
+
+4)HostListener ==> Listening to an event where we can apply the style using Renderer2.
+
+
+Ex:    
+export class HostBindDirective {
+
+  constructor(private elementRf:ElementRef,private renderd:Renderer2) { }
+
+@Input()
+defaultcolor:string='transparent';
+
+@Input()
+highlightcolor:string='red';
+
+  @HostBinding('style.backgroundColor') bgColor=this.defaultcolor;
+
+ @HostListener('mouseenter')
+ mouseover(event:Event){
+ this.bgColor=this.defaultcolor
+ }
+
+ @HostListener('mouseleave')
+ mouseleave(eventData:Event){
+   this.bgColor=this.highlightcolor
+ }
+
+}

@@ -1,0 +1,40 @@
+Topic: Inline Angular Application
+Remove all content in app.componet.html, and app.component.css
+
+and add the below code in app.component.ts
+
+---------------------------------------------------------------
+
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  //templateUrl: './app.component.html',
+  template:
+          `
+             <h1>Inline HTML file </h1>
+            <h1>Welcome to Angular Project {{title}} </h1>
+            <h2>Ashok IT Angular Batch</h2>
+        `,
+ // styleUrl: './app.component.css'
+ styles:
+ [
+    `
+    h1{
+      color:cyan
+  }
+ 
+  h2{
+      color:voilet
+  }
+   
+    `
+ ]
+})
+export class AppComponent {
+  title = 'AshokIT';
+}

@@ -1,0 +1,51 @@
+Data Binding in Angular:
+
+Communication between Typescript (Business Logic) and HTML(Front end) can be achieved by using Data Binding We have two types of Data Binding ==> One way Data Binding ==> Either from HTML to TS or TS to HTML ==> Two way Data Binding ==> Both HTML and TS
+
+One Way Databinding ==>
+------------------- 
+1) String Interpolation ==> If we want to display the typescript data to HTML we can use {{ <typescript data> }} and this way of representation is called as String Interpolation.
+
+
+2) Property Binding ==> If we want to control HTML Properties through typescript business logic, then we can use property binding. Through this feature, we can enclose the HTML Property in " [ <html Property> ]" and we can assign this value with typescript variable.
+
+Ex: <button [disabled]="control Flag"> Here disabled is HTML Property and controlFlag is typescript variable..
+
+3) Event Binding ==> If we want to invoke any business logic functionality from HTML page with an event, then we can achieve this through Event Binding concept. We can enclose the event name in " ()" and can write HTML events inside that.
+
+Ex: <button (click)="invokeTs(value)"> Here Click is an event and it will call invokeTs function in typescript on click of button.
+
+4)Two way Data Binding:
+-------------------------
+Binding should happen from both directions i.e., either html to typescript or from typescript to html in case of any change in either of the sections. We need to use [(ngModel)] for two way data binding. We need to import FormsModule to have two way data binding.
+
+Ex: <input type="text" [(ngModel)]="guestName"> where guestName is typescript variable
+
+
+
+--------------------------------------------------------------------------------------
+
+
+JSON(Java Script Object Notation):
+-----------------------------------
+
+JSON is javascript object which is used for achieving heterogenious communication.
+
+Heterogenious ==> Two different programming languages want to communicate with each other
+
+XML is also an alternative to JSON. With XML, Schema validation like DTD, XSD, XPATH etc....are heavy consuming memory. Also XML is very slow in processing but where as JSON its a javascript, hence its useful for web application.
+
+Structure of JSON: Format of JSON: { "key": "value }. Nested JSON also possible.
+
+
+
+Order: {
+
+customerName:"Sandhya",
+total: 2000,
+orderDate: "2023-22-11"
+shippingDate: "2023-24-11",
+
+}
+
+Angular framework has inbuilt capability of doing marshalling and unmarshalling. Marshalling means typescript to JSON and unmarshalling means JSON to typescript. Dispalying JSON data HTML and converting HTML data to JSON and send to typescript also internally framework has the capability.

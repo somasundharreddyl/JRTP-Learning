@@ -1,0 +1,12 @@
+===============
+Redis Cache
+===============
+
+=> 2 types of tables
+
+1) Transactional tables : CRUD operations
+
+2) Non-Transactional Tables : SELECT
+
+
+Git Hub repo : https://github.com/ashokitschool/SpringBoot_Redis_Cloud_DB_App.git

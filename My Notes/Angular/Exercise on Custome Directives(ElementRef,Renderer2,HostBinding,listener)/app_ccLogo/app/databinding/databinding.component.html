@@ -1,0 +1,36 @@
+<h1> String Interpolation</h1>
+<h2> Displaying the Typescript Data into HTML</h2>
+
+
+
+
+<h2>UserName:    {{  userName }}</h2>
+<h2>FirstName: {{ getFirstName() }} </h2>
+<h2>LastName: {{ lastName }}</h2>
+<h2>Email: {{ email }}</h2>
+
+
+<br>
+
+<h1>Todays Date and Time : {{ getDateString() }}</h1>
+
+
+<br><br>
+
+<input type="text" placeholder="Enter Course Name" #myInput>
+
+<button id="btnId" [disabled]="controlFlag" 
+        (click)="updateCourse(myInput.value)"> Check Class Status </button>
+
+        <br><br>
+Class Status is : {{ classStatus }}
+
+
+<br><br>
+
+<input type="text" placeholder="Enter Guest Name" [(ngModel)]="guestName">
+<br><br>
+Entered Guest Name is : {{guestName}}
+
+
+

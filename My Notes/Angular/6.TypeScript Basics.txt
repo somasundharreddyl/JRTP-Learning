@@ -1,0 +1,167 @@
+Compilation and Run :
+---------------------
+tsc file.ts  or npx tsc file.ts
+node file
+
+
+1. Var vs let :
+----------------
+
+ Var is not Block Scope But let is.
+
+function action(){
+    for(var i=0;i<5;i++){
+        console.log(i);   //1,2,3,4
+    }
+    console.log(i);   //5
+}
+action();
+
+
+var a=100;
+console.log(a); //100
+{
+    var a=200;
+    console.log(a);  //200
+}
+console.log(a);      //200
+
+
+
+var a=100;
+console.log(a); //100
+{
+    let a=200;
+    console.log(a);  //200
+}
+console.log(a);      //100
+
+
+
+2.TypeSafety:
+--------------
+
+let a;
+a=10;
+a='Hello';
+a=true;
+a=12.34
+
+console.log(a);
+
+let b=100
+b=20
+//b='hello' - Error
+
+let c:number
+let d:string
+let e:boolean
+let h:any
+let f:any[]=[1,'ant-man',true,2.2]
+let i:number[]
+
+
+3.Json Property:
+----------------
+class Customer{
+name:string;
+
+prop={
+    color:'blue',
+    fontSize: '50px',
+    backgroundColor: 'Yellow' 
+}
+
+}
+
+console.log(typeof(Customer)); => function
+
+
+4.Function :
+--------------
+function hello(name:string):string {
+    return 'Hello! '+ name;
+}
+
+console.log(hello('sundhar'));
+
+
+
+function add(a:number,b:number):number{
+    return a+b;
+}
+console.log(add(2,3));
+
+
+function addnumbers(){
+    console.log(2+3);
+}
+
+addnumbers()
+
+
+
+5.Class :
+----------
+class Book{
+title:string;
+author:string;
+price:number;
+
+constructor(title:string,author:string,price:number){       //Multiple Constructors Not Allowed
+this.title=title;
+this.author=author;
+this.price=price;
+}
+
+printBookInfo(){
+    console.log(this.author+" "+this.price+" "+this.title );
+}
+}
+
+
+6.Arrow Functions:
+
+function hello(name){
+    return 'Hello'+name;
+}
+
+        (or)
+let greetings=(firstname)=>'Hello'+firstname;
+
+
+console.log(greetings('Everyone'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

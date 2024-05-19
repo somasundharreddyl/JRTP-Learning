@@ -1,0 +1,211 @@
+==============
+Microservices
+=============
+
+1) Monolith Architecture
+2) Drawbacks of Monolith
+3) Microservices Architecture
+4) Pros & Cons with Microservices
+5) Service Registry (Eureka)
+6) Admin Server
+7) Zipkin Server
+8) FeignClient (Interservice Comm)
+9) Load Balancer (Ribbon)
+10) API Gateway (Filters + Routing)
+11) Config Server
+12) Circuit Breaker (Resillence4J)
+13) Spring Boot with Kafka
+14) Spring Boot with Redis
+15) Spring Security
+16) Spring Batch
+17) Unit Testing (JUnit)
+
+======================
+Monolith Architecture
+======================
+
+=> Developing all functionalities in single application.
+
+1) Presentation Layer
+2) Business Layer
+3) Data Access Layer
+
+=> Drawbacks with Monolith Architecture
+
+	1) Burden on Server
+
+	2) Response Delay
+
+	3) Server can crash
+
+	4) Single Point of failure
+
+	5) Technology Dependent
+
+	6) Re-Deploy entire app
+
+
+=> To overcome problems of Monolith Architecture, people are using Microservices Architecture.
+
+===============
+Microservices	
+===============
+
+=> It is not a technology
+
+=> It is not a framework
+
+=> It is not an API
+
+=> It is an architectural design pattern
+
+=> It is universal and anyone can use this architecture to develop applications.
+
+==============================
+Advantages with Microservices
+==============================
+
+1) Loosely Coupled
+
+2) Burden Reduced on Servers
+
+3) Easy Maintence
+
+4) No Single point of failure
+
+5) Technology Independent
+
+6) Quick deliveries
+
+
+==============================
+Challenges with Microservices
+==============================
+
+1) Bounded Context
+
+2) Repeated configurations
+
+3) Visibility
+
+
+=> Bounded context means identifying how many microservices we need to develop for one application and deciding which functionality we need to add in which microservice.
+
+=> In Several microserices we need to write same configurations like data source, smtp, kafka, redis etc....
+
+=> In microservice architecture we might not get chance to work with all apis in the application.
+
+
+
+
+============================
+Microservices Architecture
+============================
+
+1) Service Registry (Eureka)
+2) Admin Server
+3) Zipkin Server
+4) Config Server
+5) Kafka Server
+6) Redis Server
+7) API Gateway
+8) Interservice communication
+
+
+==================
+Service Registry
+==================
+
+=> Service Registry is used to maintain all apis information like name, status, url and health at once place.
+
+=> It is also called as Service Discovery. 
+
+=> We can use Eureka Server as service registry.
+
+=> It will provide user interface to get apis info.
+
+=============
+Admin Server
+=============
+
+=> It is used to monitor and manage all the apis at one place
+
+=> It provides beautiful user interface to access all apis actuator endpoints at one place.
+
+==============
+Zipkin Server
+==============
+
+=> It is used for distributed tracing of our requests
+
+=> It provides beautiful user interface to access apis execution details.
+
+================
+Config Server
+================
+
+=> It is used to seperate application code and application properties.
+
+=> It is used to externalize config props of our application.
+
+=> It makes our application loosely coupled with properties file or yml file.
+
+============
+FeignClient
+============
+
+=> It is used for interservice communication
+
+=> If one api communicate with another api with in the same application then it is called as Inter service communication.
+
+
+==============
+Kafka Server
+==============
+
+=> It is used as message broker
+
+=> Distributed streaming platform
+
+=> It works based on pub-sub model
+
+===============
+Redis Server
+===============
+
+=> Redis is a cache server
+
+=> Redis represents data in key-value format
+
+=> Redis is used to reduce no.of db calls
+
+=============
+API Gateway
+=============
+
+=> It acts as Entry point for all backend apis
+
+=> It acts mediator between frontend app and backend apis.
+
+=> In API Gateway we will write filters + Routings
+
+	Filter : We can perform pre-process & post-process
+
+	Routings : To forward request to particular backend-api.
+
+
+=================
+Load Balancing
+==================
+
+=> Distribute requests to multiple servers
+
+=> Run welcome-api in multiple instances.
+
+1) Remove port number configuration welcome api yml file
+
+2) Make changes in rest controller to display port number in response.
+
+3) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8081 and apply and run it.
+
+4) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8082 and apply and run it.	

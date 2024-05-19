@@ -1,0 +1,57 @@
+<h1>Employee Management Screen</h1><br><br>
+
+
+<app-emp-count
+[all]="getTotalEmployeesCount()"
+[male]="getMaleEmployeeCount()"
+[female]="getFemaleEmployeeCount()" 
+(countRadioButtonSelectionChanged)="onRadioChange($event)"></app-emp-count>
+
+<br><br>
+<table>
+
+    <thead>
+        <tr>
+            <td>EmployeeId</td>
+            <td>EmployeeName</td>
+            <!-- <td>Gender</td> -->
+            <td>Title</td>
+            <td>Salary</td>
+            <td>Department</td>
+            <td>Address</td>
+           <!-- <td>DOB</td>-->
+            <td>Age</td>
+            <td>Index</td>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        <ng-container *ngFor="let emp of employees;trackBy:trackByEmpCode;let i=index">
+        <tr  *ngIf="this.radioButtonValue==emp.gender || this.radioButtonValue == 'All' ">
+
+
+
+            <!--  if emp.gender==selectedRadioButtonValue   -->
+                <td>{{emp.empid}}</td>
+                <td>{{emp.empname | uppercase |title:emp.gender }}</td>
+               <!-- <td>{{emp.gender}}</td>--> 
+                <td>{{emp.title}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.department}}</td>
+                <td>{{emp.address}}</td>
+               <!--  <td>{{emp.dob}}</td>-->
+                <td>{{emp.dob|age}}</td>
+                <td>{{i}}</td>
+
+
+        </tr>
+    </ng-container>
+    </tbody>
+
+
+</table>
+
+<br>
+<button (click)="getLatestData()"> Refresh </button>

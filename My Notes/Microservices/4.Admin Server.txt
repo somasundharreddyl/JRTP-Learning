@@ -1,0 +1,25 @@
+=============
+Admin Server
+=============
+
+=> It is used to monitor and manage all the apis at one place
+
+=> It provides beautiful user interface to access all apis actuator endpoints at one place.
+
+
+======================================
+Steps to develop Spring Admin-Server
+======================================
+
+1) Create Boot application with admin-server and A-O-P dependency 
+	(select it while creating the project)
+
+2) Configure @EnableAdminServer annotation at start class
+
+3) Change Port Number (Optional)
+
+4) management.endpoints.web.exposure.include=*
+
+4) Run the boot application
+
+5) Access application URL in browser (We can see Admin Server UI)

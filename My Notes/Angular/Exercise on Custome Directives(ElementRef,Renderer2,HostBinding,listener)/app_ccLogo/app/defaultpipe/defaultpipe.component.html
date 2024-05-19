@@ -1,0 +1,27 @@
+<h1>Default Pipes Provided By Angular</h1>
+
+
+<h2>Upper Case Pipe :  {{var_one | uppercase }} </h2>
+<h2>Lower Case Pipe: {{var_two | lowercase}}</h2>
+<h3>Title Case Pipe: {{var_three | titlecase}}</h3>
+<h3>Number Pipe: {{var_four | number:"3.2-4" }}</h3>  
+<h3>Number Pipe: {{var_four | number:"4.1-2" }}</h3>  
+<h3>Currency Pipe: {{var_five | currency }}</h3>
+<h3>Currency Pipe with Rupee: {{var_five | currency:'INR' }}</h3>
+<h3>Currency Pipe with Euro: {{var_five | currency:'EUR' }}</h3>
+<h3>Currency Pipe with Pound: {{var_five | currency:'GBP' }}</h3>
+
+<h3>Date Pipe : {{var_six}}</h3> <!--   Mon Apr 08 2024 19:53:10 GMT+0530 (India Standard Time) -->
+<h3>Date Pipe with DD/MM/YY : {{var_six | date:'dd-MM-yy'}}</h3> <!--  08-04-24 -->
+<h3>Date Pipe with DD/MON/YY : {{var_six | date:'dd-MMM-yy'}}</h3> <!--  08-Apr-24 -->
+
+<h3>Date Pipe with short : {{var_six | date:'short'}}</h3> <!--  4/8/24, 7:56 PM -->
+<h3>Date Pipe with Medium : {{var_six | date:'medium'}}</h3> <!-- Apr 8, 2024, 7:57:12 PM -->
+<h3>Date Pipe with Full : {{var_six | date:'fullDate'}}</h3> <!-- Monday, April 8, 2024 -->
+
+
+<h3>var_eight : {{var_eight | json}}</h3>
+
+<h3>Class Status: {{class_status|async}} </h3>
+
+<h2>Rever  Pipe :  {{var_one | reverse }} </h2>

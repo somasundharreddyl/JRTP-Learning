@@ -1,0 +1,95 @@
+================
+Spring Security
+=================
+
+
+1) Authentication (verifying credentials)
+
+2) Authorization (can this user access specific functionality)
+
+
+-> Security is very important for every web application
+
+-> To protect our application & application data we need to implement security logic
+
+-> Spring Security concept we can use to secure our web applications / REST APIs
+
+
+-> To secure our spring boot application we need to add below starter in pom.xml file
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+Note: When we add this dependency in pom.xml file then by default our application will be secured with basic authentication. It will generate random password to access our application. 
+
+Note: Generated Random Password will be printed on console.
+
+-> We need to use below credentials to access our application
+
+				Username : user
+
+				Password : <copy the pwd from console>
+
+
+-> When we access our application url in browser then it will display "Login Form" to authenticate our request.
+
+-> To access secured REST API from postman, we need to set Auth values in POSTMAN to send the request
+
+				Auth : Basic Auth
+			    Username : user
+				Password : <copy-from-console>
+
+=====================================================
+How to override Spring Security Default Credentials
+=====================================================
+
+-> To override Default credentials we can configre security credentials in application.properties file or application.yml file like below
+
+spring.security.user.name=ashokit
+spring.security.user.password=ashokit@123
+
+
+-> After configuring credentials like above, we need to give above credentials to access our application / api.
+
+
+=====================================
+How to secure specific URL Patterns
+=====================================
+
+-> When we add 'security-starter' in pom.xml then it will apply security filter for all the HTTP methods of our application.
+
+-> But in reality we need to secure only few methods not all methods in our application.
+
+		##For Example##
+
+				/ login-page --> security not required
+		
+				/ transfer ---> security required
+
+				/ balance ---> security required
+
+				/ about-us ---> security not required
+
+				/ contact-us ---> security not required
+
+
+-> In order to achieve above requirement we need to Customize Security Configuration in our project like below
+
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfigurer {
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests((authorize) -> authorize
+						.requestMatchers("/contact", "/swagger-ui.html").permitAll()
+						.anyRequest().authenticated()
+			)
+				.httpBasic(withDefaults())
+				.formLogin(withDefaults());
+		return http.build();
+	}
+}

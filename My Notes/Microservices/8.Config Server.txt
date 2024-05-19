@@ -1,0 +1,123 @@
+================================
+What is Cloud Config Server
+================================
+
+=> We are configuring our application config properties in application.properties or application.yml file
+
+		Ex: DB Props, SMTP props, Kafka Props, App Messages etc...
+
+=> application.properties or application.yml file will be packaged along with our application (it will be part of our app jar file)
+
+=> If we want to make any changes to properties then we have to re-package our application and we have to re-deploy our application.
+
+Note: If any changes required in config properties then We have to repeat the complete project build & deployment which is time consuming process.
+
+=> To avoid this problem, we have to seperate our project source code and project config properties files.
+
+=> To externalize config properties from the application we can use Spring Cloud Config Server.
+
+=> Cloud Config Server is part of Spring Cloud Library.
+
+Note: Application config properties files we will maintain in git hub repo and config server will load them and will give to our application based on our application-name.
+
+=> Our microservices will get config properties from Config server and config server will load them from git hub repo.
+
+================================
+Developing Config Server App
+================================
+
+1) Create Git Repository and keep ymls files required for projects
+
+			Note: We should keep file name as application name
+
+			app name : greet  then file name : greet.yml
+
+			app name : welcome then file name : welcome.yml
+
+
+### Git Repo : https://github.com/ashokitschool/configuration_properties
+
+
+2) Create Spring Starter application with below dependency
+
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-config-server</artifactId>
+	</dependency>
+
+3) Write @EnableConfigServer annotation at boot start class.
+
+
+@SpringBootApplication
+@EnableConfigServer
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+4) Configure below properties in application.yml file
+
+server:
+  port: 9090
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ashokitschool/configuration_properties
+          clone-on-start: true
+management:
+  security:
+    enabled: false
+
+5) Run Config Server application
+
+=================================
+Config Server Client Development
+=================================
+
+1) Create Spring Boot application with below dependencies
+
+				a) web-starter
+				b) config-client
+				c) dev-tools
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+
+
+2) Create Rest Controller with Required methods
+
+@RestController
+@RefreshScope
+public class WelcomeRestController {
+
+	@Value("${msg}")
+	private String msg;
+
+	@GetMapping("/")
+	public String getWelcomeMsg() {
+		return msg;
+	}
+}
+
+3) Configure ConfigServer url in application.yml file like below
+
+server:
+  port: 9091
+spring:
+  config:
+    import: optional:configserver:http://localhost:7071
+  application:
+    name: welcome
+
+
+4) Run the application and test it.
+
+5) Change app-name to 'welcome' and test it.

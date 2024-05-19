@@ -1,0 +1,114 @@
+Approach to Development:
+------------------------
+1.Refer FDD(Functional Design Document) Document.
+2.Figure out Entities and Attributes.Relationship B/W Entities.
+3.Create Database Design.
+4.Write Entity class.
+5.Figure out Functionalities in Service Class.
+6.Write ServiceImplementation logic and Controller Class Implementation.
+7.Figure out No of Pages and Create .html Pages
+
+
+Concepts:
+---------
+1.Spring Data JPA Mappings : https://youtu.be/XszpXoII9Sg?si=_O1lIGT-XP8mbfxV
+
+1.OneToOne :
+      @OneToOne(cascade=cascadeType.ALL)
+      @JoinColumn(name="course_id",referencedColumnName="courseId")
+
+2.ManyToOne :
+
+       @ManyToOne(cascade=cascadeType.ALL)
+      @JoinColumn(name="course_id",referencedColumnName="courseId")
+
+3.OneToMany :
+
+    public class Teacher{
+
+    @Id
+    private Long teacherId;
+
+    @OneToMany(cascade=cascadeType.ALL)
+    @JoinColumn(name="teacher_id",referenceColumnName="teacherId")
+    private List<Course> courses;
+
+
+
+
+
+
+2.RestTemplate :
+    RestTemplate restTemplate = new RestTemplate();
+    ResponseEntity<String> responses=restTemplate.getForEntity(url, String.class);
+		String responseBody=responses.getBody();
+
+
+Best Practices:
+----------------
+1.ModelMapper Class:
+  A.Import Library :
+     <dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>3.2.0</version>
+     </dependency>
+
+ B.ModelMapper modelMapper=new ModelMapper();
+    StudentDto studentDto= modelMapper.map(student, StudentDto.class);
+
+2.Lombok
+
+3.AppConstants: Avoid Repeated String Literals
+
+ public class ApplicationConstants{
+	public static final String ERROR_MSG="errorMsg";
+	public static final String SUCCESS_MSG="successMsg";
+	public static final String RESET_PASSWORD="resetPassword";
+        }
+
+Accessing through ClassName : ApplicationConstants.ERROR_MSG
+
+4.ResponseEntity Messages(Success_MSG,Error_MSG)
+
+  Application.properties :
+
+  app:  
+   props:
+    duplicateEmailError: User Already Registered with this EmailId
+    registrationSucess: User Registered Successfully
+    loginFailed: Incorrect Credentials
+    loginSuccess: Login Sucessfully
+    passwordError: Enter Your Password Correctly
+    passwordUpdateSuccess: Password Updated Successfully
+
+ 
+@EnableConfigurationProperties
+@ConfigurationProperties(prefix="app")
+@Component
+public class ApplicationProperties {
+	
+	Map<String,String> props=new HashMap<>();  //props and props in App.Yaml must same
+
+	public Map<String, String> getProps() {
+		return props;
+	}
+
+	public void setProps(Map<String, String> props) {
+		this.props = props;
+	}
+   }
+
+
+       @Autowired
+	private ApplicationProperties appProps;
+
+
+
+
+    Map<String,String> props=appProps.getProps();
+    model.addAttribute(ApplicationConstants.ERROR_MSG, props.get(ApplicationConstants.PASSWORD_ERROR));
+
+
+    
+   

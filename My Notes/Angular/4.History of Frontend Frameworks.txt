@@ -1,0 +1,105 @@
+1.Story of Amazon.
+ First Web application which is created by Amazon in the year of 1985-88 for expanding their business through IT. Amazon is holding a business which sell books. This innovative idea changed the amazon Basiness revenue increased to 300 times.
+2.Started with Booking Selling.
+3.Later sell Books with Postal Service
+4.Build First Website.
+USPS ==> Postal Service ==> Running the business through IT With in 4 months of time frame ==> achieved target ==> problem Arises(Latency)
+5. one Fine day, Website users getting started low latency(buffering images).
+
+If 100+ customers browse application at the same time (in 5 mts) ==> Only 50 to 60 persons are getting the web page.
+
+Solution to the above problem by introducing client side framework, so that some of the responsiblities like pagecreation, validating the page, submitting the page, rendering the page etc...shifted to client side. Client Side means browser. Javascript is introduced for client side framework, where above all tasks to be shifted from server side to client side.
+
+Before JavaScript is Introduced in Frontend, Tomcat Server convert Backend data into DOM Format and then in the frontend, Browser Validates the DOM format is Correct or not. It is Time consuming Process.
+
+Some of the server side functionalities shifted to client side(Diagram-1)
+1) Validation of the page ==> DOB, qty, address ==> Validate date, Valid qty, Valid Address
+2) DOM Tree Creation(HTML Format(Body,Head)) ==> Web Page Creation ==> Dynamic HTML from JS
+3) Business logic ==> Taking inputs from web page and giving the data to server ==> Rendering the data to web page after response from Server
+
+After Javascript ==> JQuery ==> Angular JS =>AJAX =>SPA/Angular
+
+
+6.How latency issue Resolved?
+
+- Amazon Introduced JavaScript in Frontend.
+
+Why JQuery ==> Why this is evolved
+
+Why Angular JS ==> Jquery vs Angular JS ==> Programmatic Approach
+
+Why AJAX ==> Why Ajax is so poular
+
+Why Angular/SPA
+
+JQuery vs Javascript
+
+When we have large data set.I have one lakh products are there in my database table. We need to render this data to HTML (or) 50 MB of data coming from Service Layer ==> This should be binded to HTML ==> If we use Javascript for designing the page ==> Performance is very low. Animations are not supported by Javascript.There Introduced Advanced Javascript in the form of Jquery.
+
+Angular JS is introduced mainly to solve the problems of JQuery. When HSBC Bank introduced Jquery ==> Page performance is very slow as we have lot of validations on the front end. To create savings account ==> 20 mints it taking almost. Jquery is event driven Architecture. Click, Blur, Focus, Load, UnLoad, keypress, change these are the events. Develper need to write code for such events. For smaller functionalities also we need to write events.
+
+Problems observed using Jquery: JQuery typically Event Driven Architecture
+
+For every page main events are: Click(), Change(), Load
+
+A webpage contains more than 300 controls ==> Jquery is not best option ==> Its event driven architecture and complete page will be loaded with heavy events and performance will impact
+
+Angular JS ==> Introduced to minimize the event driven format with JQuery
+
+Limitations of Angular JS ==>
+
+1) Communications between pages ==> Developer need to write lot of code.
+
+Order Page, Product Page, Payment Page, Cart page, Discount page In my Cart 10 Products ==> 9500.00 ==>
+
+If i add new product with more than 500.00 rs value ==> 20% of instance discount
+
+A change in cart ==> Should automatically trigger discount page ==> Change in Discount page ==> Payment Page ==> Customer should see on the fly
+
+2) Data binding ==> HTML to Business Logic and Business Logic to HTML ==> Developer should write lot of boiler plate code.
+
+i)State Management: No Framework support for managing the state of the application. Dependency Injection to be handled by the developer and framework does not have any support==> This will increase complexicity.
+
+10 products are added to cart ==> cart page will have 10 products
+
+payment page contains ==> cost of 10 products.
+
+discount page contains ==> If any discount is availble based on the offer
+
+Removing the product from cart page ==> Automatically payment page should be updated and discount page should be updated
+
+3) Angular JS Completely developed using Javascript Library which does not have any OOPS Concepts. OOPS ==> Object Oriented
+
+Programming Principles. In real time Front End will interact with Progrmming language like Java, Dotnet, php, NodeJS etc...which has
+
+OOPS Concepts like Abstraction, Inheritance, Polymorphism, Interfaces, Abstract Classes, OverLoading and Overrding etc...
+
+4) No Mobile Support ==> We need to write code desktop, mobile, ipad different devices. Responsiveness based on the screen resolution.
+
+5) Page performance is very low ==> Loading the page, processing page, submitting the page when we have images.
+
+
+
+AJAX ==> Completely changed the lifecycle of web application. It solves all the problems exists in JS, Jquery, AngularJS etc... AJAX ==> Asynchronous Javascript Execution
+
+When we load www.ndtv.com ==> 1) Political New 2) Movie News 3) Sports News 4) Business News 5) Festival news 6) Devotional News 7) Health News 8) International news 9) Stock Market news 10) Latest Flash News (Lastest news)
+
+<div id="politics">Political news </div>
+
+<div id="business">Business news </div> <div id="devotinal">Devotional news </div>
+
+<div id="moview">Movie news </div>
+
+<div id="sports">Political news </div>
+
+<div id="flashnews">Flash news </div>
+
+2) Internally its having a cache managment: if ndtv.com ==> 500 mb of data is getting trasnsfered from, 1 mb - 2mb. Data Volume between client and server is drastically decreases
+
+3)
+Disadvantages of AJAX: AJAX may not be the right option, when entire webpage is dynamic like youtube, amazon, flipkart all are
+
+completely dynamic as the page is getting loaded based on your previous history/preferences.
+
+4) GWT (Google Web ToolKit): GWT is developed by using client side architecture for dynamic web application. All database objects like product, listofvidoes, flipkart tables ==> product.java/product.cs/product.php ==> product.js==> We will write server the code at javascript which will be loaded at client side. Marionet, BackBone, Ext JS ==> Some code server side and some code at client.
+

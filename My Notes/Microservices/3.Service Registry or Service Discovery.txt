@@ -1,0 +1,38 @@
+==================
+Service Registry
+==================
+
+=> Service Registry is used to maintain all apis information like name, status, url and health at once place.
+
+=> It is also called as Service Discovery. 
+
+=> We can use Eureka Server as service registry.
+
+=> It will provide user interface to get apis info.
+
+
+
+===============================================================
+Steps to develop Service Registry Application (Eureka Server)
+===============================================================
+
+1) Create Service Registry application with below dependency
+
+	 - EurekaServer (spring-cloud-starter-netflix-eureka-server)
+
+2) Configure @EnableEurekaServer annotation in boot start class
+
+3) Configure below properties in application.yml file
+
+server:
+  port: 8761
+  
+eureka:
+  client:
+    register-with-eureka: false
+
+Note: If Service-Registry project port is 8761 then clients can discover service-registry and will register automatically with service-registry. If service-registry project running on any other port number then we have to register clients with service-registry manually.
+
+4) Once application started we can access Eureka Dashboard using below URL
+
+		URL : http://localhost:8761/

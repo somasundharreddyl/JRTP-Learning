@@ -1,0 +1,65 @@
+<!-- 
+<app-visitingcard [name]='username'></app-visitingcard>
+
+
+
+
+<app-visitingcard name="Vijay kumar"></app-visitingcard>
+
+
+
+
+
+<app-visitingcard [inputObj]='userInput'></app-visitingcard>
+
+<app-empdetails></app-empdetails>
+
+
+<app-defaultpipe></app-defaultpipe>
+<app-empdetails></app-empdetails>
+
+
+<p appBasichighlight> Para Tag Style  </p>
+
+<span appBasichighlight> Span Tag Style </span>
+
+<div appBasichighlight>Div Tag Style </div>
+
+
+
+
+<p appRenderer> Para Tag Style  </p>
+
+<span appRenderer> Span Tag Style </span>
+
+<div appRenderer>Div Tag Style </div>
+
+
+
+
+
+<p appHostlistener> Para Tag Style  </p>
+
+<span appHostlistener> Span Tag Style </span>
+
+<div appHostlistener>Div Tag Style </div>
+
+
+
+
+
+
+<p appHostbinding [defaultColor]="'yellow'" [highlightcolor]="'green'"> Para Tag Style  </p>
+
+<span appHostbinding [defaultColor]="'yellow'" [highlightcolor]="'green'"> Span Tag Style </span>
+
+<div appHostbinding [defaultColor]="'yellow'" [highlightcolor]="'green'">Div Tag Style </div>-->
+
+<h1>Payment Gatway Screen</h1>
+
+<h2> Please Enter Credit Card Details</h2>
+<br><br>
+Card Number: <input type="text" [(ngModel)]="cardNumber" />
+
+<br>
+<img appCclogo [cardNumber]="cardNumber">

@@ -1,0 +1,48 @@
+<h1>Displaying JSON Data to HTML</h1>
+
+<h2>Employee Data </h2>
+
+
+<!-- For Loop in Angular-->
+
+
+<!-- Department Data 
+
+1 ==> Banking Department
+2 ==> Finance Department
+3 ==> HR Department
+
+-->
+
+
+<!-- Switch Case
+
+ngSwitch for Expresssion
+
+ngSwitchCase ==> Comparison
+
+ngSwitchDefault ==> Displaying default value if no matching found 
+
+-->
+
+<div *ngFor="let employee of users">
+
+    UserName :  {{employee.username }}  <!-- Vijay Kumar --> <br><br>
+    Title    :  {{employee.title}}  <!-- Software Developer --><br><br>
+    Salary    :  {{employee.salary}}  <!-- Software Developer --><br><br>
+    Department : <div [ngSwitch] ="employee.department" >
+        <span *ngSwitchCase="1"> Banking Department</span>
+        <span *ngSwitchCase="2"> Finance Department</span>
+        <span *ngSwitchCase="3"> HR Department</span>
+        <span *ngSwitchDefault>Others</span>
+    </div><br><br>
+
+    <div *ngIf="employee.address.length>0">
+        Addresss: {{employee.address}} <!-- It will display comma separted if array is there-->
+                                <!-- '1-1-111','Kukatpally',Hyderabad -->
+    </div><br><br>
+
+    <div *ngIf="employee.phones.length>0">
+        Phone: {{employee.phones}}
+    </div><br><br>
+</div>

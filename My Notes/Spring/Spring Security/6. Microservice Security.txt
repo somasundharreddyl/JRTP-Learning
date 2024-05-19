@@ -1,0 +1,15 @@
+================================
+Microservices with JWT Security
+===============================
+
+=> Auth-Service contains functionality for user registration and user login with MySQL DB. 
+
+=> If user login successfully then auth-service will generate JWT token and will send it as response to user.
+
+=> API-Gateway contains logic to validate the token using Filter.
+
+Note: In API-Gateway we have added routings for our microservices along with Filter.
+
+=> When we access any microservice url through api-gateway then api-gateway will execute filter to validate the token. If token is valid then only api-gateway will route the request to particular microservice. If token is invalid then api-gateway will throw Exception.
+
+### Git Hub Repo : https://github.com/ashokitschool/Microservices_Security.git

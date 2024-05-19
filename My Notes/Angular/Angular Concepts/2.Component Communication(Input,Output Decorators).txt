@@ -1,0 +1,47 @@
+Component Communication:
+-----------------------
+In Angular we can achieve component to component communication with input and output functions. @Input ==> If we want to send the any type of data (string/integer/json/array) from one component to other component we can use @Input decorator.
+
+Example: VisitingCard component want to dispaly a username as input from App Component
+
+VistingCardComponent
+
+AppComponent
+
+@Input('<inputvariablename>') localvariable:any="";
+
+<app-visitingcard inputvariablename="Vijay Kumar">
+
+ngOnInit(){
+
+we can use localvariable in visiting card component
+
+}
+
+We cant use the localvariable declared in @Input inside constructor. Because Constructor is only called once when component in initialized and ngOnint is used for taking the localvaraible.
+
+If we wan to have dynamic variable then we need to use property binding
+
+<app-visitingcard [inputvariablename]='username' > and username should be assigned in app component.
+
+
+
+@Output Decorator:
+-------------------
+whenever we want to emit an event from one component to another component(especially child Component to Parent Component). we use @Output Decorator.
+
+@Output Decorator comes with EventEmitter which is predefined interface.
+
+events like (change),(click),(pressdown).
+
+Ex:
+{
+selectedButton:string="All";
+
+@Output()
+selectedButtonEvent:EventEmitter<string> = new EventEmitter<string>();
+
+onChange(){
+  this.selectedButtonEvent.emit(this.selectedButton);
+}
+}

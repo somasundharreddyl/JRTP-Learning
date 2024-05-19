@@ -1,0 +1,15 @@
+<p>product-list works!</p>
+
+    <p>Please select your Category for Shopping:</p>
+    <input type="radio" id="all" name="product" value="All" [(ngModel)]="selectedButton" (change)="onChange()">
+    <label for="all">ALL {{'('+all+')'}}</label>
+    <input type="radio" id="electronics" name="product" value="Electronics" [(ngModel)]="selectedButton" (change)="onChange()">
+    <label for="electronics">Electronics {{'('+electronics+')'}}</label>
+    <input type="radio" id="fashion" name="product" value="Fashion" [(ngModel)]="selectedButton" (change)="onChange()">
+    <label for="fashion">Fashion{{'('+fashion+')'}}</label>
+    <input type="radio" id="books" name="product" value="Books" [(ngModel)]="selectedButton" (change)="onChange()">
+    <label for="books">Books{{'('+books+')'}}</label>
+
+    <br>  
+    
+  
