@@ -1,3 +1,9 @@
+Vide0-1 : https://www.youtube.com/live/8dccz7ca4FM?si=n531r5yG-VO53EA-
+Vide0-2 : https://youtu.be/mXhk5iBKzjM?si=2T4ioXHWdxwd-skb
+Vide0-3 : https://youtu.be/7FBsiR7-e3Q?si=ex_4WlO_MmAk5z_-
+
+
+
 Docker Setup:
 
 - ADD sudo before Every Command.
@@ -108,7 +114,7 @@ Docker Setup:
 
      - if we write multiple CMD instructions, docker will process only last CMD           
        Instruction.
-     - To Avoid Ovverriding USE ENTRYPOINT.
+     - To Avoid Overriding USE ENTRYPOINT.
             
   -5. EXPOSE       : used to specify Container Port Number.(To know port Number)
           
@@ -379,5 +385,19 @@ Interactive Mode vs Detached Mode :
 
 
    git remote add origin https://github.com/somasundharreddyl/CRUDOperations.git
+
+
+Want to Change .jar File Name:
+------------------------------
+       <build>
+		<finalName>spring-boot-mysql</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>			
+		</plugins>
+	</build>
+
     
 

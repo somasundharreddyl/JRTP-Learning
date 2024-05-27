@@ -1,0 +1,5 @@
+1.Maven is Build tool.
+2.Makes easy to develop project through Dependencies.
+3.Normally, downloading Jar files/Libraries and deploy in Project externally may causes Version Issues and Repetative Version Changes.
+4.Simply through Maven, we can select dependencies and download implicitly.
+5. We can easily compile,test,debug,package and deploy application through maven. 

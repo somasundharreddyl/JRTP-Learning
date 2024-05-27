@@ -1,0 +1,50 @@
+JDBC:
+1.download & import Postgres JDBCDriver into Project.
+2.Create DataBase Connection.
+3.Create Statement.
+4.Execute Statement.
+5.Close Connection.
+
+Ex:
+      {
+        String url="jdbc:postgresql://localhost:5434/CRM";
+        String user="postgres";
+        String psswrd="Password123";
+        String query="INSERT INTO public.customer(\n" +
+                "\tcustomerid, email, phonenumber, address, notes, sname)\n" +
+                "\tVALUES (2, \"Raj@gmail.com\", \"8907654321\", \"123,Rajkot\", \"Do this\", \"Raj\");";
+        Connection connection=null;
+        try {
+            connection= DriverManager.getConnection(url,user,psswrd);
+            Statement st=connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         // ResultSet rs= st.executeQuery(query);
+          //System.out.println(rs.first());
+
+//            while(rs.next()) {
+//                System.out.println(rs.getString("name"));
+//            }
+            st.execute(query);
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+- PreparedStatement is used when we want to enter user defined Variables(Not Hardcoded ones).
+- Ex:  {
+           int customerId=1;
+           String custName="Raj";
+           String url="jdbc:postgresql://localhost:5434/CRM";
+        String user="postgres";
+        String psswrd="Password123";
+        String query="INSERT INTO customer values(?,?);";
+           Connection connection= DriverManager.getConnection(url,user,psswrd);
+           PreparedStatement st=connection.prepareStatement(sql);
+           st.setInt(1,customerId);
+           st.setString(2,custName);
+           st.execute();
+       }
+

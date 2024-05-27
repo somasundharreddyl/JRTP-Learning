@@ -110,5 +110,32 @@ public class ApplicationProperties {
     model.addAttribute(ApplicationConstants.ERROR_MSG, props.get(ApplicationConstants.PASSWORD_ERROR));
 
 
+
+
+
+Application.Properties:
+------------------------
+spring.datasource.username=root
+spring.datasource.password=Password@123
+spring.datasource.url=jdbc:mysql://localhost:3306/admin-counsellor-app?createDatabaseIfNotExist=true&autoReconnect=true
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
+
+
+Want to Change .jar File Name:
+------------------------------
+       <build>
+		<finalName>spring-boot-mysql</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>			
+		</plugins>
+	</build>
+
     
    

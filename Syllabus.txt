@@ -1,0 +1,354 @@
+Join whatsapp group for class updates : https://chat.whatsapp.com/HAlFhk7IW1M8yAQLNFJSIp
+
+=====================================
+Java Real-Time Project (Fullstack)
+=====================================
+
+Course Code : 26-JRTP
+
+Class Timings : 7:30 AM to 9:00 AM (IST) (Mon-Sat)
+
+Course Duration : 3 to 4 Months
+
+Trainer : Mr. Ashok (11+ Yrs Exp, Tech Lead)
+
+=================
+Pre-Requisites
+=================
+
+1) Core Java
+2) Adv Java (JDBC & Servlets)
+3) Database (SQL)
+4) Web Development (HTML + CSS + Java Script + BS)
+
+5) Spring Boot & Microservices (paralelly you can learn) - 9:30 am
+
+================
+Course Content
+================
+
+Module-1 : Software Industry Info
+
+Module-2 : Real-Time Tools (20+)
+
+			  - Build Tools (Maven & Gradle)
+			  - Logging Tools (Log4j, Logback)
+			  - Testing Tools (Junit, Mockito, Jacocco)
+			  - Code Review Tools (SonarQube)
+			  - Deployment Tools (Docker, K8S, Jenkins)
+			  - Management (JIRA)
+			  - Artifactory Tools (Nexus, JFrog)
+			  - MessageQueues (ActiveMQ, Kafka)
+			  - Cache (GemFire, Redis)
+			  - Documenation (Swagger)
+			  - API Testing (Postman)
+
+Module-3 : Mini Projects (2)
+
+				- Requirements Analysis
+				- Query Log Preparation
+				- JAM sessions
+				- Effort Estimations
+				- DB Design (Data Modeling)
+				- Components Design
+				- Development
+				- Testing
+				- Debugging
+
+Module-4 : Microservices 
+
+			- Service Registry
+			- Admin Server
+			- Zipkin Server
+			- API Gateway
+			- Config Server
+			- FeignClient
+			- Circuit Breaker
+
+Module-5 : AWS Cloud
+
+			- What is Cloud & Why ?
+			- EC2 (Virtual Machines)
+			- S3 (Storage)
+			- RDS (Relational DB)	
+			- IAM (User Management)
+			- Lambdas (Serverless computing)
+			- EKS (Kubernetes cluster)	
+			- Billing in AWS
+
+Module-6 : Major Project (Health care / E-Comm)
+
+Module-7 : Angular & Front end Development	
+
+Module-8 : Interview Guidance
+
+					- Self Introduction
+					- Roles & Responsibilities
+					- Project Architecture
+					- Resume Building
+					- Mock Interviews (skill assesement)
+					- Placement assistance
+
+==============================
+Types of Software Companies
+==============================
+
+1) Product Based Companies
+
+		=> Develop projects and sell to customers
+
+		Ex: Google, Microsoft, Amazon, Facebook, Oracle, IBM....
+
+		=> Interview process will be difficult
+
+				a) Coding Tests
+				b) Data Structures
+				c) Time Complexity
+				d) Space Complexity
+				e) Algorithms
+				f) System Design
+		
+		=> High packages will be available	
+		
+				Freshers => 15 to 20 LPA			
+
+2) Service Based Companies
+
+	=> Develop projects based on client requirements
+
+	Ex: TCS, INFY, CTS, CapGemeni, TechM, Wipro, HCL, Deloitte
+
+	=> Interview process will happen with latest technologies
+
+			a) Coding Test
+			b) Core Java
+			c) Spring Boot
+			d) Microservices
+			e) Cloud
+			f) Tools
+			g) Project
+
+	=> Freshers salary => 3.6 LPA
+	=> Experienced Salary = exp * 5/6 lakhs
+
+3) Outsourcing Companies
+
+	=> These companies will provide employees to other companies
+
+	=> Select trained freshers from institues for less pkg
+			(2 to 3 LPA)
+
+		=> 2 to 3 months on job training (corporate culture)
+
+		=> Company will sell the candiate for good package
+
+
+============================
+Types of Software Projects
+============================
+
+1) Scratch development : Develop from starting (15%)
+
+2) Support projects : Enhancements/Change Request/Bug fixing (75%)
+
+3) Migration projects : Update from old technology to latest technology 
+                         (10%)
+
+===========================
+Types of Teams In project  
+===========================
+
+
+1) On Shore Team : (functional) Working from client location
+
+			=> Understand client business model
+			=> Understand client requirements
+			=> Discussion with client
+			=> Prepare BRD/SRS
+			=> Prepare FDD (snagit)
+			=> Take Client Approvals for development
+			=> Explain requirements to offshore
+
+2) Off shore Team : Development + Testing + DevOps   
+
+			=> Understand FDD
+			=> Participate in group discussions   
+			=> Prepare Query Log 
+			=> Join Bridge Calls (ms teams)   
+			=> Project Design
+			=> Development
+			=> Testing
+			=> Deployment
+			=> Delivery
+			=> Support       
+
+
+B1 Visa ===> Business Visa (2 to 3 months)
+
+L1 Visa ===> (Skilled) 2 years (You should work for same company)
+
+H1 Visa ==> 3 years (work permit) => Lottery
+
+F1 Visa ==> Student Visa
+
+
+============================
+What is Real-Time Project ?
+============================
+
+1) Understanding Real-Time work culture
+
+2) Improving Analysis skills
+
+3) Improving Coding Skills
+
+4) Understanding real-time usecases
+
+5) Working with Tools in project
+
+6) Understanding fullstack development
+
+7) Understanding Project Delivery process
+
+8) Understand project infrastructure
+
+
+
+
+=> 20+ Real-Time Tools
+
+=> Analysis skills
+
+=> Coding skills
+
+=> Fullstack development
+
+=> Integrations
+
+=> Unit Testing
+
+=> Code Integration
+
+=> Deployment process (jenkins + docker + k8s)
+
+=> Cloud Computing (infrastructure)
+
+=> Linux Commands
+
+=================
+Real-Time Tools
+=================
+
+1) Ant / Maven / Gradle
+
+		- Build Tools
+		- To automate project build process
+				- Download libraries
+				- Compile
+				- Execute test cases
+				- package our app
+
+2) SVN / Git Hub / BitBucket 
+
+			- Source code repository servers
+			- Code Integration			
+			- Monitored access	
+
+3) SonarQube 
+
+			- Code Review
+			- Static code analysis
+			- Identify developers mistakes	
+			- Display code coverage		
+
+4) Junit & Mocking	
+
+			- Unit testing
+			- Isolated unit testing
+			- Mock framework(Mockito)	
+
+5) Log4J / Logback / Logstash
+
+			- To implement logging
+			- To understand runtime behaviour of app
+			- To identify runtime exceptions root cause
+			- Log msgs will be stored in log files
+
+6) Putty / ELK / Splunk
+
+			- To monitor log msgs of application
+
+
+7) JMETER
+
+			- Performance Testing
+			- To check stability of the application
+			- To bottle necks
+
+8) JIRA
+
+			- Project Management
+			- Task Assignments
+			- Task reports
+			- Bug Reporting			
+
+
+9) Docker 
+			- Containerization platform
+			- Make app loosely coupled with env
+
+10) Kubernetes			
+
+			- Orchestration platform
+			- Managing containers
+			- Load Balancing for containers
+
+11) Jenkins
+
+			- CI CD server
+			- To automate build & deployment process
+
+12) Nexus / JFrog 
+
+			- Artifactory servers
+			- To maintain build artifacts
+					(jars/wars/images)
+
+13) Kafka
+
+			- Message Broker
+			- Event Driven applications
+
+14) Redis
+			- Cache
+			- To reduce db calls
+
+15) Postman
+			- API Testing
+
+16) Swagger
+			- Documentation
+
+17) Apache POI
+
+			- To generate excel files	
+
+18) iText
+
+			- To generate pdf files
+
+
+
+===============
+Pre-Requisites
+===============
+
+Laptop / System : 8 GB RAM
+
+Java : 17v
+
+Free tier account in AWS cloud
+
+Reference : https://www.youtube.com/watch?v=xi-JDeceLeI
+
+Daily : 1.5 hours class +  2 to 3 hours for practice
