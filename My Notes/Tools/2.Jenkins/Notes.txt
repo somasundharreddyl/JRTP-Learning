@@ -56,7 +56,9 @@ What is Jenkins ?
 
 3) Jenkins is used to automate Build & Deployment process
 
-4) Using Jenkins we can implement CI CD
+4) Using Jenkins we can implement CI CD.
+
+5)Pipeline : Series of steps we follow to build and Deploy Project.
 
 ===============
 Jenkins Setup
@@ -131,6 +133,8 @@ pipleline {
 		}
 		stage('Deployment'){
 			steps{
+                                sh 'docker stop ashokitc'
+                                sh 'docker rm ashokitc'
 				sh 'docker run -d -p 9090:8080 --name ashokitc ashokitapp'
 			}
 		}
@@ -143,6 +147,14 @@ pipleline {
 Notes :
 agent any      => Any Machine(Leader-Follower Machine)(Master-Job Created,Follower-Job Executed)
 Run in Any Available Machine.
+
+
+Job/Configure:
+*Periodically(*****) =>    Trigger Every Min eventhough code change does not happen.
+*Poll SCM (*****)=> Trigger Every Min if code change happens.
+
+
+->ByDefault, Jenkins server runs in 8080 Port.
 
 ====================
 Real-Time workflow
@@ -170,3 +182,12 @@ Note: Production Jenkins server will be seperate.
 
 Note : How Do you restore and maintain Jobs when Disaster occurs in Linux Machine?
      - By Installing Thin Backup Plugin.
+
+Note : What are Stages available in CI/CD Pipeline?
+     - git clone,mvn package,docker Img Creation,Container Creation(Deployment)
+
+
+
+
+Username : admin
+Password : Password@123

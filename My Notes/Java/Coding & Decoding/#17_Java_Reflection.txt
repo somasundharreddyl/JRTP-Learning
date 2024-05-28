@@ -1,0 +1,14 @@
+Link : https://notebook.zohopublic.in/public/notes/u3i1sae669a127ac24a07842a488207750a7c
+
+Note : Reflection breaks Singleton Design Pattern.
+       We can avoid that By implementing lines in Private Constructor.
+
+         private constructor(){
+                if(obj==null){new Constructor()}
+                else{return obj;}
+          }
+
+
+
+Note : Why Avoid Reflection?
+       - Slow : all executions and change in behaviour of class,methods and constructor happens at Runtime. so it is slow.
