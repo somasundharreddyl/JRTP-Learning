@@ -16,10 +16,16 @@ Steps to develop Spring Admin-Server
 
 2) Configure @EnableAdminServer annotation at start class
 
-3) Change Port Number (Optional)
+3) Change Port Number to 1111 (Optional) 
 
 4) management.endpoints.web.exposure.include=*
 
 4) Run the boot application
 
 5) Access application URL in browser (We can see Admin Server UI)
+
+
+Note :
+*No Need to give any Application.Properties to connect with Admin Server.You just Have to download admin Dependency irrespective of whatever the Port Number admin Server is Running.
+
+*No Need of @EnableAdminServer.

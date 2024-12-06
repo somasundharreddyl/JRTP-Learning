@@ -1,0 +1,41 @@
+
+@Autowired
+private JDBCTemplate jdbc;
+
+public void addStudents(Student s){
+String sql = "insert into student (collng, name, marks) values (?,?,?)";
+
+int rows = jdbc.update(sql, s.getRollNo(), s.getName(), s.getMarks()); System.out.println(rows + " effected");
+
+}
+
+
+public List<Student> findAll() {
+
+String sql = "select * from student";
+
+return jdbc.query(sql, (rs, rowNum) -> {
+
+Student s = new Student();
+
+s.setRollNo(rs.getInt(columnLabel: "con"));
+
+s.setName(rs.getString(columnLabel: "name"));
+
+s.setMarks(rs.getInt(columnLabel: "marks"));
+
+return s;
+
+});
+
+
+
+Note:use update for insert,update,delete queries.
+     use query for select.
+
+Resources->schema.sql:
+create table student(rollno int primary key,name varchar(50),marks int)
+
+data.sql:
+insert into student (collng, name, marks) values (101,'Raj',89);
+insert into student (collng, name, marks) values (102,'Praj',70);

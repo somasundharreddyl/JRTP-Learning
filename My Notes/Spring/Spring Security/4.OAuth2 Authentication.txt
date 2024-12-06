@@ -1,6 +1,18 @@
+Video URL  : https://ashok-it.teachable.com/courses/26-jrtp-7-30am-21-feb-24-ashok/lectures/53867978
 ##############
 OAuth 2.0
 ##############
+
+
+OAuth Security Diagram:
+----------------------
+1.User trying to Access Application.
+2.Application sends req to Third party App(Github/google).
+4.User login with Github Credentials.
+5.Github verify credentials with Server.
+6.if Credentials are valid,github send token to Application.
+7.Application allow user.
+
 
 ###  1) Create Spring Boot application with below dependencies
 

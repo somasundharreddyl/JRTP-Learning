@@ -57,6 +57,10 @@ What is code coverage ?
 
 => To get code coverage report we can use 'jacocco' plugin.
 
+=> maven test => To Restart Jacocco plugin or refresh.
+
+
+
 ====================================
 Unit Testing for Boot application
 ====================================
@@ -72,6 +76,17 @@ SpringBoot Rest API + Junit + Mocking + Jacoco
 
 https://github.com/ashokitschool/sb_rest_api_junit_app.git
 
+
+Annotations:
+============
+1. @WebMvcTest(controllers=prodController.class) => Class to represent we are testing    
+                                                    Controller class.
+2. @MockBean => create dummy object for real object.
+3. @InjectMocks => injecting mock object into this class.
+4. @Test => declaring method as Junit Testing.
+5. @SpringBootTest => Represent class(Service,Repo) as SpringBootTesting class
+6. @ExtendWith(value={MockitoExtension.class}) => used along with InjectMocks Annotation to avoid Null Exception for dummy Object.
+7.
 
 
 =====================================================

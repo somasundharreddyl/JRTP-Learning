@@ -1,0 +1,47 @@
+                String str="mathematics";
+		int[] arr=new int[] {5,9,11,2,8,21,1};
+		
+		
+		
+	    //1.Find Occurance of String elements
+		Map<String,Long> map=Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+		System.out.println(map);
+		
+	
+		//2.Find Duplicates from String Elements
+	   Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+	                            .entrySet().stream().filter(x->x.getValue()>1).map(Map.Entry::getKey).forEach(System.out::println);
+	
+	
+	
+	  //3.First Non-Repetive Element in String
+	
+	String value=Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()))
+	                            .entrySet().stream()
+	                            .filter(x->x.getValue()==1)
+	                            .findFirst()
+	                            .map(Map.Entry::getKey).get();
+	System.out.println("First Non-Repetive : "+value);
+	                          
+	  //4.Second Highest Element in an Array.
+           Integer ans=Arrays.stream(arr).boxed().sorted((a,b)->b-a).skip(1).findFirst().get();
+           System.out.println(ans);
+		
+      
+           
+     //5.largest String length element in an Array
+           String[] strArr=new String[] {"java","spring","Hibernate","microservices"};
+         String largestString=  Arrays.stream(strArr).reduce((str1,str2)->str1.length()>str2.length()?str1:str2).get();
+         System.out.println(largestString);
+         
+         
+         
+    //6.find Array element starts with 1.
+         Arrays.stream(arr).boxed().map(x->x+"").filter(x->x.startsWith("1")).forEach(System.out::println);
+         
+         
+         
+     //String.join()
+         List<String> list=Arrays.asList("1","2","3","4");
+      String str1=   String.join("-", list);
+      String str2=   String.join(",", list);

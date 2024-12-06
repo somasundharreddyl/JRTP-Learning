@@ -27,3 +27,8 @@ Steps to work with Zipkin Server
 4) Access zipkin server dashboard
 
 		URL : http://localhost:9411/
+
+
+Note:
+
+No Need of Application.Prop to Connect with Zipkin.Just add Zipkin Dependency.

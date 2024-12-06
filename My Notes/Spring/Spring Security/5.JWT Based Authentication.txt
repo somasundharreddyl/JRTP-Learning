@@ -1,3 +1,7 @@
+Video URL : https://ashok-it.teachable.com/courses/26-jrtp-7-30am-21-feb-24-ashok/lectures/53867978
+
+ https://ashok-it.teachable.com/courses/26-jrtp-7-30am-21-feb-24-ashok/lectures/53885359
+
 #########################
 Spring Boot with JWT
 ########################

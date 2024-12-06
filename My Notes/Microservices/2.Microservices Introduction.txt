@@ -30,22 +30,24 @@ Monolith Architecture
 2) Business Layer
 3) Data Access Layer
 
-=> Drawbacks with Monolith Architecture
+=> Challenges with Monolith Architecture
+        
+        0)Maintainance Problem(all functionalities develop in one Application)
 
-	1) Burden on Server
+	1) All Code deploy in One Server So Burden on Server
 
 	2) Response Delay
 
 	3) Server can crash
 
-	4) Single Point of failure
+	4) Single Point of failure(small Exception in Application leads to System Collapse)
 
 	5) Technology Dependent
 
-	6) Re-Deploy entire app
+	6) Re-Deploy entire application(if we do minor change in our Code)
 
 
-=> To overcome problems of Monolith Architecture, people are using Microservices Architecture.
+=> To overcome Challenges of Monolith Architecture, people are using Microservices Architecture.
 
 ===============
 Microservices	
